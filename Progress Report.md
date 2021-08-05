@@ -75,8 +75,9 @@ Just simple fullstack website which can be used to support small lawn mowing bus
 **Our articles(blog)**
 
 Manager can upload new articles relate to lawn mowing which can be used to improve SEO and help clients.
-JSON
+
 ```
+New article
 {
   date: 2009/2/2,
   author: xxx,
@@ -96,10 +97,49 @@ JSON
 - Booking get quote as a guess or
 - Become member and have a look of their book/service history
 
-```
-bookings 
-{
 
+
+```
+Quote  
+{
+  quote_date: 09-23-2000,
+  client_address: '123 abc st',
+  client_phone: 111,
+  client_email: '333@.com',
+  date booked:xxx/xx/xx,
+
+  service item: [
+    { 
+      item:lawn_mowing, 
+      unit:2.5,
+      what_unit: 'hours',
+      price_per_unit : 90, // depends
+      others: some extra money charged because ...
+    },
+    {
+      item:remove_garbage, 
+      unit:5.5,
+      what_unit: 'kg',
+      price_per_unit : 34, // depends
+      others: some extra money charged because ...,
+    },
+    ...
+
+    ],
+  tax_rate:0.15 
+}
+```
+
+Invoice could similar to quote but more specific
+
+```
+{
+  //...
+  invoice_id: 123312,
+  Invoice_date: 08-01-2020,
+  service provider: ['Alice','Mick'],
+  discount: 15%,
+  //...
 }
 ```
 
@@ -107,17 +147,17 @@ bookings
 
 ### API Design
 
-| Resource          | POST                          | GET                       | PUT                | DELETE             |
-| ----------------- | ----------------------------- | ------------------------- | ------------------ | ------------------ |
-| /api/services     | create new service page       | Retrieve all services     | Update all         | NO                 |
-| /api/services/:id | Deny                          | Retrieve id service       | Update id          | delete id          |
+| Resource          | POST                          | GET                       | PUT                | DELETE          |
+| ----------------- | ----------------------------- | ------------------------- | ------------------ | --------------- |
+| /api/services     | create new service page       | Retrieve all services     | Update all         | NO              |
+| /api/services/:id | Deny                          | Retrieve id service       | Update id          | delete id       |
 | /api/clients      |
 | /api/clients/:id  |
-| /api/info         | Err                           | general info about        | Err                | Err                |
+| /api/info         | Err                           | general info about        | Err                | Err             |
 | /api/blogs        |
-| /api/blogs/:id    | Err                           | get single blog           | update single blog | delete single blog |
-| /api/reviews      | Create new client Testimonial | Retrieve all              | Err                | Err                |
-| /api/reviews/:id  | Err                           | get single                | update single      | delete single      |
-| /api/team         | add new team member           | retrieve all team members | Err                | Err                |
+| /api/blogs/:id    | Err                           | get single blog           | update single blog | del single blog |
+| /api/reviews      | Create new client Testimonial | Retrieve all              | Err                | Err             |
+| /api/reviews/:id  | Err                           | get single                | update single      | del single      |
+| /api/team         | add new team member           | retrieve all team members | Err                | Err             |
 
 
