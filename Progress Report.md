@@ -108,7 +108,7 @@ Quote
   client_email: '333@.com',
   date booked:xxx/xx/xx,
 
-  service item: [
+  service_items: [
     { 
       item:lawn_mowing, 
       unit:2.5,
@@ -138,6 +138,7 @@ Invoice could similar to quote but more specific
   invoice_id: 123312,
   Invoice_date: 08-01-2020,
   service provider: ['Alice','Mick'],
+  extra_note: 'blah',
   discount: 15%,
   //...
 }
