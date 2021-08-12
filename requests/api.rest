@@ -1,0 +1,36 @@
+### create A guest user
+POST http://localhost:3003/api/users
+content-type: application/json
+
+{
+    "username":"guest",
+    "password":"guest",
+    "name": "guest"
+}
+
+### Test quotes put without login 
+POST http://localhost:3003/api/quotes 
+Content-Type: application/json
+
+{
+    "serviceItem": [
+        {
+            "item": "LawnMow",
+            "unit": 23,
+            "whatUnit": "Hours",
+            "pricePerUnit": 12,
+            "otherComment": "Very tough evn plug $20",
+            "otherCost": 20
+        }
+    ],
+    "client":{
+        "name":"yifan",
+        "phone" : "23213213"
+    }
+}
+
+
+### Test quotes get
+DELETE http://localhost:3003/api/quotes/61151ecb91bc81143c422453
+
+

@@ -103,11 +103,13 @@ New article
 Quote  
 {
   quote_date: 09-23-2000,
-  client_address: '123 abc st',
-  client_phone: 111,
-  client_email: '333@.com',
-  date booked:xxx/xx/xx,
-
+  client: {
+    client_id: "23" // guest user id as guest
+    client_name: 'fist nma'
+    client_address: '123 abc st',
+    client_phone: 111,
+    client_email: '333@.com',
+  },
   service_items: [
     { 
       item:lawn_mowing, 
@@ -126,7 +128,6 @@ Quote
     ...
 
     ],
-  tax_rate:0.15 
 }
 ```
 
@@ -160,5 +161,6 @@ Invoice could similar to quote but more specific
 | /api/reviews      | Create new client Testimonial | Retrieve all              | Err                | Err             |
 | /api/reviews/:id  | Err                           | get single                | update single      | del single      |
 | /api/team         | add new team member           | retrieve all team members | Err                | Err             |
+| /api/booking      | New booking                   | all hisotry of booking    | Err                | Err             |
 
 
