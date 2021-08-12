@@ -31,6 +31,6 @@ Content-Type: application/json
 
 
 ### Test quotes get
-DELETE http://localhost:3003/api/quotes/61151ecb91bc81143c422453
+DELETE http://localhost:3003/api/quotes/611533e9ba7f3e30601b3b45
 
 
