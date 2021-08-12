@@ -164,3 +164,16 @@ Invoice could similar to quote but more specific
 | /api/booking      | New booking                   | all hisotry of booking    | Err                | Err             |
 
 
+## Week 5
+ **Date time**       : 09/08/2021 - 08/15/2021
+
+ **Main propose**    : Build back-end APIs
+
+ **Plan tasks**      : 
+
+ - [x] create user and guest quoting apis
+ - [x] guest can get quote without login
+ - [x] registered user also get login
+ - [x] refactored backend code
+ - [x] added middleware logger and error handlers
+ - [x] user administration with JWT token
