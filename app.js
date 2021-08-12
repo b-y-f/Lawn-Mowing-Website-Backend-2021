@@ -5,6 +5,7 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const routeRouter = require('./controllers/quotes')
+const clientsRouter = require('./controllers/clients')
 
 app.use(cors())
 app.use(express.json())
@@ -24,5 +25,6 @@ mongoose.connect(config.MONGODB_URI, {
   })
 
 app.use('/api/quotes', routeRouter)
+app.use('/api/clients', clientsRouter)
 
 module.exports = app

@@ -12,10 +12,12 @@ const quoteSchema = new mongoose.Schema({
       otherCost: Number
     }
   ],
-  client: {
-    name: String,
-    phone: String
-  }
+  client: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Client'
+    }
+  ]
 })
 
 quoteSchema.set('toJSON', {

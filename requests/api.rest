@@ -24,11 +24,21 @@ Content-Type: application/json
         }
     ],
     "client":{
-        "name":"yifan",
+        "id":"6115431aa4014d0b84f6d288",
         "phone" : "23213213"
     }
 }
 
+### create client
+POST http://localhost:3003/api/clients
+Content-Type: application/json
+
+{
+    "username":"guest",
+    "password":"guest",
+    "name":"guest"
+
+}
 
 ### Test quotes get
 DELETE http://localhost:3003/api/quotes/611533e9ba7f3e30601b3b45
