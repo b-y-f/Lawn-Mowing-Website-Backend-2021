@@ -23,7 +23,7 @@ const clientSchema = mongoose.Schema({
 
 clientSchema.plugin(uniqueValidator)
 
-clientSchema.set('toJson', {
+clientSchema.set('toJSON', {
   transform: (doc, returnedObj) => {
     returnedObj.id = returnedObj._id.toString()
     delete returnedObj._id
