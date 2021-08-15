@@ -67,3 +67,23 @@ Content-Type: application/json
     "username": "byf",
     "password": "123"
 }
+
+### post with token
+
+POST http://localhost:3003/api/quotes 
+Content-Type: application/json
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ5ZiIsImlkIjoiNjExOGQ4NzlmYTBjY2MzMDY0YzI4MmI5IiwiaWF0IjoxNjI5MDIxMjExfQ.z6hOtllk19yB_EQu4_WQ6EkHKhdbq82leC2daVMIZyc
+
+{
+    "serviceItem": [
+        {
+            "item": "New something",
+            "unit": 1.25,
+            "whatUnit": "Hours",
+            "pricePerUnit": 12,
+            "otherComment": "Very tough evn plug $20",
+            "otherCost": 20
+        }
+    ],
+    "clientId" : "6115431aa4014d0b84f6d288"
+}

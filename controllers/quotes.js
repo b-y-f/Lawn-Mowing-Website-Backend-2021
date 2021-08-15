@@ -1,6 +1,7 @@
 const quotesRouter = require('express').Router()
 const Quote = require('../models/quote')
 const Client = require('../models/client')
+const jwt = require('jsonwebtoken')
 
 quotesRouter.get('/', async (req, res) => {
   const quotes = await Quote.find({}).populate('client', { username: 1, name: 1 })
@@ -16,9 +17,26 @@ quotesRouter.get('/:id', (req, res, next) => {
     })
 })
 
+const getToken = requst => {
+  const authorization = requst.get('authorization')
+  return authorization && authorization
+    .toLowerCase().startsWith('bearer ')
+    ? authorization.substring(7)
+    : null
+}
+
 quotesRouter.post('/', async (req, res) => {
   const body = req.body
   const client = await Client.findById(body.clientId)
+
+  const token = getToken(req)
+  const decodedToken = jwt.verify(token, process.env.SECRET)
+
+  console.log(decodedToken)
+
+  if (!token || !decodedToken.id) {
+    return res.status(400).json({ error: 'token expired or invalid' })
+  }
 
   if (body.serviceItem === undefined) {
     return res.status(400).json({ error: 'serviceItem missing' })
