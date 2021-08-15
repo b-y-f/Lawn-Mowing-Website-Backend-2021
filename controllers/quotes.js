@@ -1,10 +1,11 @@
 const quotesRouter = require('express').Router()
 const Quote = require('../models/quote')
+const Client = require('../models/client')
 
-quotesRouter.get('/', (req, res) => {
-  Quote.find({}).then(quotes => {
-    res.json(quotes)
-  })
+quotesRouter.get('/', async (req, res) => {
+  const quotes = await Quote.find({}).populate('client', { username: 1, name: 1 })
+
+  res.json(quotes)
 })
 
 quotesRouter.get('/:id', (req, res, next) => {
@@ -15,8 +16,9 @@ quotesRouter.get('/:id', (req, res, next) => {
     })
 })
 
-quotesRouter.post('/', (req, res) => {
+quotesRouter.post('/', async (req, res) => {
   const body = req.body
+  const client = await Client.findById(body.clientId)
 
   if (body.serviceItem === undefined) {
     return res.status(400).json({ error: 'serviceItem missing' })
@@ -31,15 +33,14 @@ quotesRouter.post('/', (req, res) => {
       }
       return obj
     }),
-    client: {
-      name: body.client.name,
-      phone: body.client.phone
-    }
+    client: client._id
   })
 
-  quote.save().then(saved => {
-    res.json(saved)
-  })
+  const savedQuote = await quote.save()
+  client.quotes = client.quotes.concat(savedQuote._id)
+  await client.save()
+
+  res.json(savedQuote)
 })
 
 quotesRouter.delete('/:id', (req, res, next) => {

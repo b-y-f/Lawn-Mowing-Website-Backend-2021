@@ -23,10 +23,6 @@ Content-Type: application/json
             "otherCost": 20
         }
     ],
-    "client":{
-        "id":"6115431aa4014d0b84f6d288",
-        "phone" : "23213213"
-    }
 }
 
 ### create client
@@ -41,6 +37,26 @@ Content-Type: application/json
 }
 
 ### Test quotes get
-DELETE http://localhost:3003/api/quotes/611533e9ba7f3e30601b3b45
+DELETE http://localhost:3003/api/quotes/6118b3473e24400cb803f343
+
+
+
+### login as guest then create quote
+POST http://localhost:3003/api/quotes 
+Content-Type: application/json
+
+{
+    "serviceItem": [
+        {
+            "item": "LawnMow",
+            "unit": 22133,
+            "whatUnit": "Hours",
+            "pricePerUnit": 12,
+            "otherComment": "Very tough evn plug $20",
+            "otherCost": 20
+        }
+    ],
+    "clientId" : "6115431aa4014d0b84f6d288"
+}
 
 
