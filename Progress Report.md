@@ -116,6 +116,7 @@ Quote
       unit:2.5,
       what_unit: 'hours',
       price_per_unit : 90, // depends
+      urgent: True,
       others: some extra money charged because ...
     },
     {
@@ -123,6 +124,7 @@ Quote
       unit:5.5,
       what_unit: 'kg',
       price_per_unit : 34, // depends
+      urgent: False,
       others: some extra money charged because ...,
     },
     ...
@@ -177,3 +179,11 @@ Invoice could similar to quote but more specific
  - [x] refactored backend code
  - [x] added middleware logger and error handlers
  - [x] user administration with JWT token
+
+
+## Week 6
+ **Date time**       : 16/08/2021 - 22/15/2021
+
+ **Main propose**    : Build Font-end for login and get quote
+
+ **Plan tasks**      : 

@@ -77,13 +77,13 @@ authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ5Z
 {
     "serviceItem": [
         {
-            "item": "New something",
-            "unit": 1.25,
+            "item": "Maaaaaaaaa",
+            "unit": 0.22,
             "whatUnit": "Hours",
             "pricePerUnit": 12,
             "otherComment": "Very tough evn plug $20",
             "otherCost": 20
         }
     ],
-    "clientId" : "6115431aa4014d0b84f6d288"
+    "clientId" : "6118d879fa0ccc3064c282b9"
 }

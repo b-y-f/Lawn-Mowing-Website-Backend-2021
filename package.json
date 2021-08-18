@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/byfsdhr/Lawn-Mowing-Website-frontend-2021.git"
+    "url": "git+https://github.com/byfsdhr/Lawn-Mowing-Website-backend-2021.git"
   },
   "keywords": [],
   "author": "yifan bao",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/byfsdhr/Lawn-Mowing-Website-frontend-2021/issues"
+    "url": "https://github.com/byfsdhr/Lawn-Mowing-Website-Backend-2021/issues"
   },
-  "homepage": "https://github.com/byfsdhr/Lawn-Mowing-Website-frontend-2021#readme",
+  "homepage": "https://github.com/byfsdhr/Lawn-Mowing-Website-Backend-2021#readme",
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
