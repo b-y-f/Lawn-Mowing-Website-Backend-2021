@@ -5,7 +5,10 @@ const quoteSchema = new mongoose.Schema({
   serviceItem: [
     {
       item: String,
-      unit: Number,
+      unit: {
+        type: Number,
+        default: 0
+      },
       whatUnit: String,
       pricePerUnit: Number,
       otherComment: String,

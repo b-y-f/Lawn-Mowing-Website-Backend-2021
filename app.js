@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const routeRouter = require('./controllers/quotes')
 const clientsRouter = require('./controllers/clients')
 const loginRouter = require('./controllers/login')
+const guestsRouter = require('./controllers/guests')
 
 app.use(cors())
 app.use(express.json())
@@ -27,6 +28,7 @@ mongoose.connect(config.MONGODB_URI, {
 
 app.use('/api/quotes', routeRouter)
 app.use('/api/clients', clientsRouter)
+app.use('/api/guests', guestsRouter)
 app.use('/login', loginRouter)
 
 module.exports = app
