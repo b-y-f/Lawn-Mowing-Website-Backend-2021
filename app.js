@@ -30,7 +30,7 @@ mongoose.connect(config.MONGODB_URI, {
 app.use('/api/quotes', routeRouter)
 app.use('/api/clients', clientsRouter)
 app.use('/api/guests', guestsRouter)
-app.use('/login', loginRouter)
+app.use('/api/login', loginRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
