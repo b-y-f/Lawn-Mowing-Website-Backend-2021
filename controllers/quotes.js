@@ -30,16 +30,16 @@ quotesRouter.post('/', async (req, res) => {
   const client = await Client.findById(body.clientId)
 
   const token = getToken(req)
-  const decodedToken = jwt.verify(token, process.env.SECRET)
+  if (token) {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
 
-  console.log(decodedToken)
+    if (!token || !decodedToken.id) {
+      return res.status(400).json({ error: 'token expired or invalid' })
+    }
 
-  if (!token || !decodedToken.id) {
-    return res.status(400).json({ error: 'token expired or invalid' })
-  }
-
-  if (body.serviceItem === undefined) {
-    return res.status(400).json({ error: 'serviceItem missing' })
+    if (body.serviceItem === undefined) {
+      return res.status(400).json({ error: 'serviceItem missing' })
+    }
   }
 
   const quote = new Quote({
