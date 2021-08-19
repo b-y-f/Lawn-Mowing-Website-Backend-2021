@@ -1,6 +1,7 @@
 const quotesRouter = require('express').Router()
 const Quote = require('../models/quote')
-const Client = require('../models/client')
+// const Client = require('../models/client')
+const Guest = require('../models/guest')
 const jwt = require('jsonwebtoken')
 
 quotesRouter.get('/', async (req, res) => {
@@ -27,7 +28,8 @@ const getToken = requst => {
 
 quotesRouter.post('/', async (req, res) => {
   const body = req.body
-  const client = await Client.findById(body.clientId)
+
+  const guest = await Guest.findById(body.guestId)
 
   const token = getToken(req)
   if (token) {
@@ -41,9 +43,7 @@ quotesRouter.post('/', async (req, res) => {
       return res.status(400).json({ error: 'serviceItem missing' })
     }
   }
-
   const quote = new Quote({
-    date: new Date(),
     serviceItem: body.serviceItem.map(i => {
       const obj = {
         item: i.item,
@@ -51,12 +51,12 @@ quotesRouter.post('/', async (req, res) => {
       }
       return obj
     }),
-    client: client._id
+    client: guest.id
   })
 
   const savedQuote = await quote.save()
-  client.quotes = client.quotes.concat(savedQuote._id)
-  await client.save()
+  guest.quotes = guest.quotes.concat(savedQuote._id)
+  await guest.save()
 
   res.json(savedQuote)
 })

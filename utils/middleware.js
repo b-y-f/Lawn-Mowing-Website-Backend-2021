@@ -8,12 +8,14 @@ const requestLogger = (req, res, next) => {
   next()
 }
 
-const errorHandler = (error, res, req, next) => {
-  logger.error('undefined error', res.message)
+const errorHandler = (error, req, res, next) => {
+  logger.error('undefined error', error.message)
   if (error.name === 'CastError') {
     return res.status(400).send({ error: 'wrong id' })
+  } else if (error.name === 'ValidationError') {
+    return res.status(400).json({ error: error.message })
   }
-  next()
+  next(error)
 }
 
 const unknownEndpoint = (req, res, next) => {

@@ -87,3 +87,16 @@ authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ5Z
     ],
     "clientId" : "6118d879fa0ccc3064c282b9"
 }
+
+
+
+### create a guest client
+POST http://localhost:3003/api/guests 
+Content-Type: application/json
+
+{
+    "name": "test-name",
+    "address": "test-addr",
+    "phone": "test phone",
+    "email": "3@sd.com"
+}

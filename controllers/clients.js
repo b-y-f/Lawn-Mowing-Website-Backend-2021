@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt')
 const clientsRouter = require('express').Router()
 const Client = require('../models/client')
 
-clientsRouter.post('/', async (req, res) => {
+clientsRouter.post('/', async (req, res, next) => {
   const body = req.body
 
   const saltRound = 10
@@ -17,9 +17,9 @@ clientsRouter.post('/', async (req, res) => {
     email: body.email
   })
 
-  const saved = await client.save()
-
-  res.json(saved)
+  await client.save()
+    .then(saved => res.json(saved))
+    .catch(err => next(err))
 })
 
 clientsRouter.get('/', async (req, res) => {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const quoteSchema = new mongoose.Schema({
-  date: Date,
+  date: { type: Date, default: Date.now },
   serviceItem: [
     {
       item: String,
@@ -18,9 +18,10 @@ const quoteSchema = new mongoose.Schema({
   client: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Client'
+      ref: 'Guest'
     }
-  ]
+  ],
+  comment: String
 })
 
 quoteSchema.set('toJSON', {
