@@ -187,3 +187,7 @@ Invoice could similar to quote but more specific
  **Main propose**    : Build Font-end for login and get quote
 
  **Plan tasks**      : 
+
+
+ ## Week 7
+ 
