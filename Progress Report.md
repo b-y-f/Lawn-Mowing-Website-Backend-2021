@@ -182,9 +182,9 @@ Invoice could similar to quote but more specific
 
 
 ## Week 6
- **Date time**       : 16/08/2021 - 23/08/2021
+ **Date time**       : 16/08/2021 - 22/08/2021
 
- **Main propose**    : Build Font-end for login and get quote
+ **Main propose**    : Build Font-end for show the service and work, then click quote to the quote page
 
  **Plan tasks**      : 
 
@@ -196,4 +196,9 @@ Invoice could similar to quote but more specific
  - [x] made page content markdown editable
 
  ## Week 7
- 
+
+  **Date time**       : 23/08/2021 - 29/08/2021
+
+ **Main propose**    : Quote page with guest and client can add quote and check the history of their quotes, also can cancel it.
+
+ **Plan tasks**      : 
