@@ -182,12 +182,18 @@ Invoice could similar to quote but more specific
 
 
 ## Week 6
- **Date time**       : 16/08/2021 - 22/15/2021
+ **Date time**       : 16/08/2021 - 23/08/2021
 
  **Main propose**    : Build Font-end for login and get quote
 
  **Plan tasks**      : 
 
+ - [x] create font-end page 
+ - [x] page is low cost for business and best for SEO
+ - [x] used next.js framework to build static site could be put in CDN
+ - [x] remove unnecessary APIs
+ - [x] learnt tailwind CSS and add some styles, work on mobile
+ - [x] made page content markdown editable
 
  ## Week 7
  
