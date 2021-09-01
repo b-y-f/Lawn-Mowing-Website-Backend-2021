@@ -14,6 +14,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static('build'))
 app.use(middleware.requestLogger)
+app.use(middleware.tokenExtractor)
 
 mongoose.connect(config.MONGODB_URI, {
   useNewUrlParser: true,
@@ -21,14 +22,14 @@ mongoose.connect(config.MONGODB_URI, {
   useFindAndModify: false,
   useCreateIndex: true
 })
-  .then(result => {
+  .then(() => {
     logger.info('connected to MongoDB')
   })
   .catch(err => {
     logger.info('fail to connect MongoDB', err.message)
   })
 
-app.use('/api/quotes', qouteRouter)
+app.use('/api/quotes', middleware.userExtractor, qouteRouter)
 app.use('/api/clients', clientsRouter)
 app.use('/api/login', loginRouter)
 

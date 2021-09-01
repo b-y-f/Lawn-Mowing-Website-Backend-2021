@@ -1,9 +1,8 @@
 const quotesRouter = require('express').Router()
 const Quote = require('../models/quote')
-const jwt = require('jsonwebtoken')
 
 quotesRouter.get('/', async (req, res) => {
-  const quotes = await Quote.find({}).populate('guest').populate('client')
+  const quotes = await Quote.find({}).populate('guest').populate('client',{quotes:1})
   res.json(quotes)
 })
 
@@ -15,38 +14,33 @@ quotesRouter.get('/:id', (req, res, next) => {
     })
 })
 
-const getToken = requst => {
-  const authorization = requst.get('authorization')
-  return authorization && authorization
-    .toLowerCase().startsWith('bearer ')
-    ? authorization.substring(7)
-    : null
-}
+
 
 quotesRouter.post('/', async (req, res) => {
   const body = req.body
+  const user = req.user
 
-  const token = getToken(req)
-  if (token) {
-    const decodedToken = jwt.verify(token, process.env.SECRET)
-
-    if (!token || !decodedToken.id) {
-      return res.status(400).json({ error: 'token expired or invalid' })
-    }
-
-    if (body.serviceItem === undefined) {
-      return res.status(400).json({ error: 'serviceItem missing' })
-    }
-
-    const userId = decodedToken.id
-
-    // const guestQuote = new Quote({
-    //   serviceItem: body.serviceItem,
-    //   comment: body.comment,
-    //   guest: userId
-    // })
-
+  if (!req.token || !user.id) {
+    return res.status(400).json({ error: 'token expired or invalid' })
   }
+
+  if (body.serviceItem === undefined) {
+    return res.status(400).json({ error: 'serviceItem missing' })
+  }
+
+  const quote = new Quote({
+    serviceItem: body.serviceItem,
+    comment: body.comment,
+    client: user.id
+  })
+
+  const savedQuote = await quote.save()
+
+  user.quotes = user.quotes.concat(savedQuote.id)
+  await user.save()
+
+  res.json(savedQuote)
+
 })
 
 quotesRouter.delete('/:id', (req, res, next) => {

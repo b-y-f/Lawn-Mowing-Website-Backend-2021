@@ -201,4 +201,7 @@ Invoice could similar to quote but more specific
 
  **Main propose**    : Quote page with guest and client can add quote and check the history of their quotes, also can cancel it.
 
- **Plan tasks**      : 
+ **Plan tasks**      :
+
+ - [x] Due to some bug appeared when I try to modify some of backend apis and better debug, I decide start to implement test driven development!!
+ - [x] 
