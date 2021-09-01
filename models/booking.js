@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const quoteSchema = new mongoose.Schema({
+const bookingSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
   address: String,
   serviceItem: [
@@ -23,7 +23,7 @@ const quoteSchema = new mongoose.Schema({
   comment: String
 })
 
-quoteSchema.set('toJSON', {
+bookingSchema.set('toJSON', {
   transform: (doc, retObj) => {
     retObj.id = retObj._id.toString()
     delete retObj._id
@@ -31,4 +31,4 @@ quoteSchema.set('toJSON', {
   }
 })
 
-module.exports = mongoose.model('Quote', quoteSchema)
+module.exports = mongoose.model('Booking', bookingSchema)

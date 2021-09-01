@@ -3,10 +3,10 @@ const supertest = require('supertest')
 const app = require('../app')
 const api = supertest(app)
 
-const Quote = require('../models/quote')
+const Booking = require('../models/booking')
 const Client = require('../models/client')
 
-const initialQuotes = [
+const initialBookings = [
   {
     address: '123 rd',
     serviceItem: [
@@ -39,13 +39,13 @@ const initialClient = {
 }
 
 beforeEach(async () => {
-  await Quote.deleteMany({})
+  await Booking.deleteMany({})
   await Client.deleteMany({})
 
-  let quoteObj = new Quote(initialQuotes[0])
-  await quoteObj.save()
-  quoteObj = new Quote(initialQuotes[1])
-  await quoteObj.save()
+  let bookingObj = new Booking(initialBookings[0])
+  await bookingObj.save()
+  bookingObj = new Booking(initialBookings[1])
+  await bookingObj.save()
 
 
 })
@@ -53,12 +53,12 @@ beforeEach(async () => {
 
 test('a quote can be added and returned by a client with valid token', async () => {
   await api
-    .get('/api/quotes')
+    .get('/api/bookings')
     .expect(200)
     .expect('Content-Type', /application\/json/)
 
-  const res = await api.get('/api/quotes')
-  expect(res.body).toHaveLength(initialQuotes.length)
+  const res = await api.get('/api/bookings')
+  expect(res.body).toHaveLength(initialBookings.length)
 
   const addresses = res.body.map(i => i.address)
   expect(addresses).toContain('123 rd')
@@ -80,13 +80,19 @@ test('add user--> login --> post with token', async () => {
   const auth = {
     Authorization: 'bearer ' + resLogin.body.token
   }
-  const resQuote = await api.post('/api/quotes')
+  const resBooking = await api.post('/api/bookings')
     .set(auth)
-    .send(initialQuotes[0])
-  console.log(resQuote.body.client);
-  expect(resQuote.body).toHaveProperty('comment')
+    .send(initialBookings[0])
+  console.log(resBooking.body.client);
+  expect(resBooking.body).toHaveProperty('comment')
 
 }, 50000)
+
+test('will return "token expired or invalid" when no token', async () => {
+  const resBooking = await api.post('/api/bookings')
+    .send(initialBookings[1])
+  expect(resBooking.body.error).toContain('token expired')
+})
 
 
 afterAll(() => {

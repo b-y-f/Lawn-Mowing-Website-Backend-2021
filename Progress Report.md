@@ -4,9 +4,6 @@
 
 **Date time**: 13/07/2021 – 19/10/2021
 
-# About 
-Just simple fullstack website which can be used to support small lawn mowing bussiness
-
 # Weekly plan
 ## Week 1
 **Date time**       : 12/07/2021 – 18/07/2021
@@ -195,13 +192,66 @@ Invoice could similar to quote but more specific
  - [x] learnt tailwind CSS and add some styles, work on mobile
  - [x] made page content markdown editable
 
+
  ## Week 7
 
   **Date time**       : 23/08/2021 - 29/08/2021
+
+  **Important thing learnt during debug** :
+ - Never create new function if old one not work solid
+ - One by one: api then frontend, make change api and frontend at the same time could make things mass
+ - Always end point testing APIs to make sure everything work as desired
+ - Start from simple
 
  **Main propose**    : Quote page with guest and client can add quote and check the history of their quotes, also can cancel it.
 
  **Plan tasks**      :
 
  - [x] Due to some bug appeared when I try to modify some of backend apis and better debug, I decide start to implement test driven development!!
- - [x] 
+ - [x] Add redux library to make state easier to manage
+ - [ ] Make use of material UI to make quote app nicer
+
+
+
+# Lawn mowing service website
+
+## About
+
+Just simple full-stack website which can be used to support small lawn mowing business, business owner can modify the content of this website with markdown, customer can get quote for those services. Registered user can view their booking histories, booking online and change booking to urgent.
+
+## Requirements overview
+
+There are three kind of user for this website, guest, client, manager. I will introduce each below.
+
+### Guest
+
+They can open the website and browse all the services and make a quote, after they got a quote, they can contact the consultant and make an appointment, then they have potential to become a Client.
+
+### Client
+
+They are registered user, they can add booking cancel it, and change the booking importance to urgent, also have a view of their past bookings.
+
+### Manager
+
+A manager can send quote and invoice to users. Approve, decline bookings with some message for reason. They also can change content of front-end website, for example, add new service and articles related to lawn mowing for improve SEO.  
+
+## Software environment
+
+Nodejs : v16.7.0
+
+System: Unix
+
+### Website development
+
+|Front-end frame |  Back-end frame| Package manager| Databse
+|--- | --- | --- | ---
+ |NEXT.js | express.js| npm|MongoDB
+ |React.js| |
+
+
+### Website deployment
+
+Static site: Vercel
+
+Web app: Heroku
+

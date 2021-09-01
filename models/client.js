@@ -13,10 +13,10 @@ const clientSchema = mongoose.Schema({
   phone: String,
   email: String,
   passwordHash: String,
-  quotes: [
+  bookings: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Quote'
+      ref: 'Booking'
     }
   ]
 })
@@ -32,6 +32,5 @@ clientSchema.set('toJSON', {
   }
 })
 
-const Client = mongoose.model('Client', clientSchema)
 
-module.exports = Client
+module.exports = mongoose.model('Client', clientSchema)

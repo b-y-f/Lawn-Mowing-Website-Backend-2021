@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
-const qouteRouter = require('./controllers/quotes')
+const bookingRouter = require('./controllers/booking')
 const clientsRouter = require('./controllers/clients')
 const loginRouter = require('./controllers/login')
 const middleware = require('./utils/middleware')
@@ -29,7 +29,7 @@ mongoose.connect(config.MONGODB_URI, {
     logger.info('fail to connect MongoDB', err.message)
   })
 
-app.use('/api/quotes', middleware.userExtractor, qouteRouter)
+app.use('/api/bookings', middleware.userExtractor, bookingRouter)
 app.use('/api/clients', clientsRouter)
 app.use('/api/login', loginRouter)
 
