@@ -7,7 +7,6 @@ const mongoose = require('mongoose')
 const qouteRouter = require('./controllers/quotes')
 const clientsRouter = require('./controllers/clients')
 const loginRouter = require('./controllers/login')
-const guestsRouter = require('./controllers/guests')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 
@@ -31,7 +30,6 @@ mongoose.connect(config.MONGODB_URI, {
 
 app.use('/api/quotes', qouteRouter)
 app.use('/api/clients', clientsRouter)
-app.use('/api/guests', guestsRouter)
 app.use('/api/login', loginRouter)
 
 app.use(middleware.unknownEndpoint)

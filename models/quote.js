@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const quoteSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
+  address: String,
   serviceItem: [
     {
       item: String,
@@ -15,12 +16,10 @@ const quoteSchema = new mongoose.Schema({
       otherCost: Number
     }
   ],
-  client: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Guest'
-    }
-  ],
+  client: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Client'
+  },
   comment: String
 })
 

@@ -12,7 +12,6 @@ clientsRouter.post('/', async (req, res, next) => {
     username: body.username,
     name: body.name,
     passwordHash,
-    address: body.address,
     phone: body.phone,
     email: body.email
   })
@@ -23,7 +22,7 @@ clientsRouter.post('/', async (req, res, next) => {
 })
 
 clientsRouter.get('/', async (req, res) => {
-  const clients = await Client.find({}).populate('quotes', { date: 1, serviceItem: 1 })
+  const clients = await Client.find({}).populate('quotes')
 
   res.json(clients.map(client => client.toJSON()))
 })

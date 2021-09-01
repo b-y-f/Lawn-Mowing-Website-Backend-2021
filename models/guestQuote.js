@@ -1,15 +1,22 @@
 const mongoose = require('mongoose')
 
 const guestSchema = mongoose.Schema({
-
+  date: { type: Date, default: Date.now },
   name: String,
   address: String,
   phone: String,
   email: String,
-  quotes: [
+  serviceItem: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Quote'
+      item: String,
+      unit: {
+        type: Number,
+        default: 0
+      },
+      whatUnit: String,
+      pricePerUnit: Number,
+      otherComment: String,
+      otherCost: Number
     }
   ]
 })

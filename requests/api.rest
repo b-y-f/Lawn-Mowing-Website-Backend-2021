@@ -1,15 +1,5 @@
-### create A guest user
-POST http://localhost:3003/api/users
-content-type: application/json
-
-{
-    "username":"guest",
-    "password":"guest",
-    "name": "guest"
-}
-
 ### Test quotes put without login 
-POST http://localhost:3003/api/quotes 
+POST http://localhost:3001/api/quotes 
 Content-Type: application/json
 
 {
@@ -26,14 +16,13 @@ Content-Type: application/json
 }
 
 ### create client
-POST http://localhost:3003/api/clients
+POST http://localhost:3001/api/clients
 Content-Type: application/json
 
 {
     "username":"byf",
     "password":"123",
     "name":"yifan"
-
 }
 
 ### Test quotes get
@@ -41,26 +30,27 @@ DELETE http://localhost:3003/api/quotes/6118b3473e24400cb803f343
 
 
 
-### login as guest then create quote
-POST http://localhost:3003/api/quotes 
+###  create quote
+POST http://localhost:3001/api/quotes 
 Content-Type: application/json
 
 {
     "serviceItem": [
         {
             "item": "LawnMow",
-            "unit": 22133,
+            "unit": 123,
             "whatUnit": "Hours",
             "pricePerUnit": 12,
             "otherComment": "Very tough evn plug $20",
             "otherCost": 20
         }
     ],
-    "clientId" : "6115431aa4014d0b84f6d288"
+    "comment" : "lalala2",
+    "userId" : "612e40e2f339e773e5e6ab2a"
 }
 
 ### user login
-POST http://localhost:3003/login
+POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
@@ -70,9 +60,9 @@ Content-Type: application/json
 
 ### post with token
 
-POST http://localhost:3003/api/quotes 
+POST http://localhost:3001/api/quotes 
 Content-Type: application/json
-authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ5ZiIsImlkIjoiNjExOGQ4NzlmYTBjY2MzMDY0YzI4MmI5IiwiaWF0IjoxNjI5MDIxMjExfQ.z6hOtllk19yB_EQu4_WQ6EkHKhdbq82leC2daVMIZyc
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ5ZiIsImlkIjoiNjEyZTQwZTJmMzM5ZTc3M2U1ZTZhYjJhIiwiaWF0IjoxNjMwNDIxMzA4fQ.Xa5budF5YgfcK3ZwA8V89yW13iV8Z0dSFYerYe-oebs
 
 {
     "serviceItem": [
@@ -85,7 +75,7 @@ authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ5Z
             "otherCost": 20
         }
     ],
-    "clientId" : "6118d879fa0ccc3064c282b9"
+    "userId" : "612e4a3fde601e80b9f1344a"
 }
 
 
@@ -108,4 +98,14 @@ Content-Type: application/json
 {
     "username":"byf",
     "password":"123"
+}
+
+
+### guest post
+POST http://localhost:3001/api/guests 
+Content-Type: application/json
+
+{
+    "name":"sadasd",
+    "address" : "asdasdasdas"
 }
