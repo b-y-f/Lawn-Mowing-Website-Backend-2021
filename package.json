@@ -4,10 +4,10 @@
   "description": "About",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "start": "cross-env NODE_ENV=production node index.js",
     "lint": "eslint .",
-    "dev": "nodemon index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
     "deploy": "git push heroku main",
     "build:ui": "rm -rf build && cd /home/byf/Lawn-Mowing-Website-Frontend-2021/ && npm run build --prod && cp -r build /home/byf/Lawn-Mowing-Website-Backend-2021/"
   },
@@ -23,12 +23,14 @@
   },
   "homepage": "https://github.com/byfsdhr/Lawn-Mowing-Website-Backend-2021#readme",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.6"
   },
   "dependencies": {
     "axios": "^0.21.1",
