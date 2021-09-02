@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "About",
   "main": "index.js",
+  "engines": {
+    "node":"16.7",
+    "npm":"7.21"
+  },
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "start": "cross-env NODE_ENV=production node index.js",
