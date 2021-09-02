@@ -24,7 +24,7 @@ loginRouter.post('/', async (req, res) => {
   // TODO token expire with 1 hour
   const token = jwt.sign(clientToken, process.env.SECRET)
 
-  res.status(200).send({ token, username: client.username, name: client.name })
+  res.status(200).send({ token, username: client.username, name: client.name ,id: client._id})
 })
 
 module.exports = loginRouter
