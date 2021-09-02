@@ -6,12 +6,14 @@ booksRouter.get('/', async (req, res) => {
   res.json(bookings)
 })
 
-booksRouter.get('/:id', (req, res, next) => {
-  Booking.findById(req.params.id)
-    .then(b => b ? res.json(b) : res.status(404).send({ error: 'No such id' }))
-    .catch(err => {
-      next(err)
-    })
+booksRouter.get('/:id', async(req, res, next) => {
+
+  try {
+    const bookings = await Booking.findById(req.params.id)
+    res.json(bookings)
+  } catch (error) {
+    next(error)
+  }
 })
 
 booksRouter.post('/', async (req, res) => {

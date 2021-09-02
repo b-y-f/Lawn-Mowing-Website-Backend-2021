@@ -22,9 +22,19 @@ clientsRouter.post('/', async (req, res, next) => {
 })
 
 clientsRouter.get('/', async (req, res) => {
-  const clients = await Client.find({}).populate('quotes')
+  const clients = await Client.find({}).populate('bookings')
 
   res.json(clients.map(client => client.toJSON()))
+})
+
+clientsRouter.get('/:id', async(req,res,next)=>{
+  
+  try {
+    const clients = await Client.findById(req.params.id).populate('bookings')
+    res.json(clients)
+  } catch (error) {
+    next(error)
+  }
 })
 
 module.exports = clientsRouter
