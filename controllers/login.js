@@ -21,10 +21,12 @@ loginRouter.post('/', async (req, res) => {
     id: client._id
   }
 
+  const googleApiKey = process.env.GOOGLE_MAPS_API_KEY
+
   // TODO token expire with 1 hour
   const token = jwt.sign(clientToken, process.env.SECRET)
 
-  res.status(200).send({ token, username: client.username, name: client.name ,id: client._id})
+  res.status(200).send({ token, username: client.username, name: client.name ,id: client._id,googleApiKey})
 })
 
 module.exports = loginRouter
