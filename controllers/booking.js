@@ -30,6 +30,7 @@ booksRouter.post('/', async (req, res) => {
 
   const booking = new Booking({
     serviceItem: body.serviceItem,
+    address:body.address,
     comment: body.comment,
     client: user.id
   })

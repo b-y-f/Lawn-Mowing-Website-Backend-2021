@@ -89,3 +89,21 @@ Content-Type: application/json
     "name":"sadasd",
     "address" : "asdasdasdas"
 }
+
+### admin regeist
+POST http://localhost:3001/api/admin/register 
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password" : "admin"
+}
+
+### admin login
+POST http://localhost:3001/api/admin/login 
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password" : "admin"
+}
