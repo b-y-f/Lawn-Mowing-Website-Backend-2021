@@ -238,7 +238,8 @@ Invoice could similar to quote but more specific
 
 
 **Current Serverless APIs**
-endpoints:
+http api :https://kv3kfkgvmj.execute-api.us-east-2.amazonaws.com/post-contact
+restful:
   POST - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes
   GET - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes/{id}
   GET - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes
