@@ -1,0 +1,19 @@
+{
+  "name": "serverless-lambda-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mongoose": "^6.0.6"
+  },
+  "devDependencies": {
+    "serverless-offline": "^8.2.0"
+  }
+}

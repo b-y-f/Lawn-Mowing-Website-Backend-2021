@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
-const quoteSchema = mongoose.Schema({
+const quoteSchema = new mongoose.Schema({
   name:String,
   location:String,
   date: { type: Date, default: Date.now },
-  hasSent: {type:Boolean, default: false},
+  hasReplied: {type:Boolean, default: false},
   isUrgent: {type:Boolean, default: false},
   phone:{
     type:String,
@@ -19,18 +19,15 @@ const quoteSchema = mongoose.Schema({
   email: {
     type:String,
     required: [true, 'email required']
-  },
-  extraInfo:String,
-  important: Boolean,
+  }, 
   serviceItem:[{
     item: String,
     unit: {
       type: Number,
       default: 0
     },
-    whatUnit: String,
-    otherComment: String,
-  }]
+  }],
+  comment:String,
 })
 
 quoteSchema.set('toJSON', {
@@ -38,7 +35,6 @@ quoteSchema.set('toJSON', {
     returnedObj.id = returnedObj._id.toString()
     delete returnedObj._id
     delete returnedObj.__v
-    delete returnedObj.passwordHash
   }
 })
 

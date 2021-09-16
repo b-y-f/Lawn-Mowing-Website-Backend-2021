@@ -1,0 +1,47 @@
+service: lawn-mowing-quote
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  region: us-east-2
+
+functions:
+  create:
+    handler: handler.create
+    events:
+      - http:
+          method: post
+          path: quotes
+          cors: true
+  getOne:
+    handler: handler.getOne
+    events:
+      - http:
+          path: quotes/{id}
+          method: get
+          cors: true
+  getAll:
+    handler: handler.getAll 
+    events:
+      - http:
+          path: quotes
+          method: get
+          cors: true
+  update:
+    handler: handler.update 
+    events:
+      - http:
+          path: quotes/{id}
+          method: put
+          cors: true
+  delete:
+    handler: handler.delete
+    events:
+      - http:
+          path: quotes/{id} 
+          method: delete
+          cors: true
+
+plugins:
+  - serverless-offline # adding the plugin to be able to run the offline emulation

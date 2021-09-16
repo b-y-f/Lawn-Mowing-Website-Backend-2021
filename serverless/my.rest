@@ -1,0 +1,47 @@
+POST https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes HTTP/1.1
+content-type: application/json
+
+{
+  "name":"time test",
+  "location":"earth"
+}
+
+### test env
+POST http://localhost:3000/dev/quotes HTTP/1.1
+content-type: application/json
+
+{
+  "name":"time test",
+  "location":"earth",
+  "email":"bbbbb8bbbb@e123.comww",
+  "phone":"123-345-1234",
+  "serviceItem":[
+    {
+      "item":"gardening",
+      "unit": 143
+    }
+  ]
+}
+
+### test env: get single
+GET http://localhost:3000/dev/quotes/613af00d2ab2f6a316abb297 HTTP/1.1
+
+### test env: delete single
+DELETE http://localhost:3000/dev/quotes/6142f12eefeb286d456998a7 HTTP/1.1
+
+### test env: update single
+PUT http://localhost:3000/dev/quotes/6142f268497394878ff4fe1e HTTP/1.1
+content-type: application/json
+
+{
+  "name":"PUT TEST!!!!!!!!!!!!!!!",
+  "location":"earth",
+  "email":"bbbbb8bbbb@e123.comww",
+  "phone":"123-345-1234",
+  "serviceItem":[
+    {
+      "item":"gardening",
+      "unit": 143
+    }
+  ]
+}

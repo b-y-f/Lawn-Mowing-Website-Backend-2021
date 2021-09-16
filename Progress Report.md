@@ -227,12 +227,23 @@ Invoice could similar to quote but more specific
 
  - [x] Used form-hook which could improve performance and feasibility to handle form in react
  - [x] add and test backend admin apis "/api/admin"
- - [ ] 
+ - [x] change AWS api getway from REST to HTTP API to save faster speed and save money
+ - [x] Add another serverless function submit quote to mongoDB(in the end migrate all quote Api to serverless)
+ - [ ] Add a little bit style to booking item and quote item 
 
 
   **Some notes** :
- - faf
+ - I think for small business, serverless is the future, it is pointless to run server 7*24 for only 500 visit per day
+ - So I am attempting to learn some concepts about microservices and serverless which could help me better adapt to contemporary devlopment environment.
 
+
+**Current Serverless APIs**
+endpoints:
+  POST - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes
+  GET - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes/{id}
+  GET - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes
+  PUT - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes/{id}
+  DELETE - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes/{id}
 
 
 
