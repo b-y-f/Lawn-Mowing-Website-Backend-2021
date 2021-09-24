@@ -12,9 +12,9 @@ const bookingSchema = new mongoose.Schema({
       worker:String
     }
   ],
-  client: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Client'
+    ref: 'User'
   },
   adminComment: String
 })

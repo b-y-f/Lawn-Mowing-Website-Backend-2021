@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
   name: String,
   address: String,
   phone: String,
-  email: String,
+  email: {type:String, unique:true},
   bookings: [
     {
       type: mongoose.Schema.Types.ObjectId,

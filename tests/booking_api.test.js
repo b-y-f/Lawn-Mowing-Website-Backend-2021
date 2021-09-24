@@ -6,37 +6,38 @@ const api = supertest(app)
 const Booking = require('../models/booking')
 const User = require('../models/user')
 
-const initialBookings = [
-  {
-    bookingDate:new Date(),
-    address: '123 rd',
-    serviceItem: [
-      {
-        'item': 'LawnMow',
-        'serviceComment':'Jamse',
-        'worker':'jims'
-      }
-    ],
-    comment: 'test!!!!!!'
-  },
-  {
-    address: '456 rd',
-    serviceItem: [
-      {
-        'item': 'Others',
-      }
-    ],
-  }
-]
+// 1 hour refresh
+const TOKEN ='eyJhbGciOiJSUzI1NiIsImtpZCI6ImFlNTJiOGQ4NTk4N2U1OWRjYWM2MmJlNzg2YzcwZTAyMDcxN2I0MTEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYXV0aC1kZXYtNTNjOWIiLCJhdWQiOiJhdXRoLWRldi01M2M5YiIsImF1dGhfdGltZSI6MTYzMjQ0NTM5NSwidXNlcl9pZCI6ImRmTkx2MVdRMVVaRUw3MW5KMUpsRlhybm5pbzIiLCJzdWIiOiJkZk5MdjFXUTFVWkVMNzFuSjFKbEZYcm5uaW8yIiwiaWF0IjoxNjMyNDU3MDM3LCJleHAiOjE2MzI0NjA2MzcsImVtYWlsIjoiMTIzQDEyMy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiMTIzQDEyMy5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.kMMsRmzH4LKXw_Np4Ka3qiIRNJBEYsEXe-ayDf2WWbcX13JWiI9dxDuIwuITNtLfow-vuDSO5r9pJ0fRcpqQc5ZYXfbbliZT6IUENLl6_vStgbiY0bC6sOlchdbYN1sHT8g-nGtxiJR1X0xMMUbtsp0WN1ih9gLAOAjipvM7YMmDOnde4hh7wekhY3mCmLZJdy1NKbUyqfEclGNJG84mWrBDCHiyifQOl9A7Pg4eZE0bVVHaQJylQMuDk-LzIY8SPMmpS8vqEfN8ldZmMKmYspO7IV6rqYfxzIWNwHlMosk9IFzdP9rJXbAliH1Q6zXtZF165XE7Lw3HO1KXH6v_pw'
 
-const initialClient = {
-  email: 'byf@123.com',
-  name: 'linux'
+const dummyBooking = {
+  bookingDate:new Date(),
+  address: '123 rd',
+  serviceItem: [
+    {
+      'item': 'LawnMow',
+      'serviceComment':'Jamse',
+      'worker':'jims'
+    }
+  ],
+  adminComment: 'admin commment test!!!!!!'
 }
 
-const clientA =  {
-  email: 'clientA@123.com',
-  name: 'cA'
+const dummyBooking2 = {
+  bookingDate:new Date(),
+  address: '456 rd',
+  serviceItem: [
+    {
+      'item': 'ZZZ',
+      'serviceComment':'Good!!!',
+      'worker':'bills'
+    }
+  ],
+  adminComment: 'admin commment test!!!!!!'
+}
+
+const dummyUser = {
+  email:'123@123.com',
+  name:'dummy222'
 }
 
 const auth = (token) => {
@@ -45,87 +46,95 @@ const auth = (token) => {
   }
 }
 
+
 beforeEach(async () => {
   await Booking.deleteMany({})
   await User.deleteMany({})
 
-  let bookingObj = new Booking(initialBookings[0])
-  await bookingObj.save()
-  bookingObj = new Booking(initialBookings[1])
-  await bookingObj.save()
+  let user = new User(dummyUser)
+  await user.save()
 })
 
-// TODO rework
-describe('all related to add a booking', ()=>{
 
-  // test('check token when create new booking', async()=>{
-  //   await 
-  // })
+describe('create new booking', ()=>{
+  test('watch user', async()=>{
+    const res= await api
+      .get('/api/users')
+      
+    console.log(res.body)
+  })
 
-  test('a booking can be added and returned by a client with valid token', async () => {
+  test('create two new booking with one user token', async()=>{
+    const res = await api
+      .post('/api/bookings')
+      .set(auth(TOKEN))
+      .send(dummyBooking)
+
+    const res2 = await api
+      .post('/api/bookings')
+      .set(auth(TOKEN))
+      .send(dummyBooking2)
+
+    const res3 = await api.get('/api/bookings')
+
+    const res4 = await api.get('/api/users')
+      
+
+    console.log(res3.body,res4.body)
+
+  },10000)
+})
+
+describe('update', ()=>{
+
+  test('delete booking', async()=>{
+    const bookingRes = await api
+      .post('/api/bookings')
+      .set(auth(TOKEN))
+      .send(dummyBooking)
+
+    const bookingId = bookingRes.body.id
+    // console.log(bookingId)
+    const delRes = await api.delete(`/api/bookings/${bookingId}`)
+    console.log(delRes.body)
+    const watchBookings = await api.get('/api/bookings')
+    console.log(watchBookings.body)
+  })
+
+  test('update booking info', async()=>{
+    const bookingRes = await api
+      .post('/api/bookings')
+      .set(auth(TOKEN))
+      .send(dummyBooking)
+
+    // const watch0 = await api.get('/api/bookings')
+
+    const bookingId = bookingRes.body.id
+
+    const dummyUpdateBooking = {
+      bookingDate:new Date(),
+      address: 'adress updated',
+      status:'approved',
+      serviceItem: [
+        {
+          'item': 'updated',
+          'serviceComment':'Good!!!',
+          'worker':'test'
+        }
+      ],
+      adminComment: 'admin commment updated!!!!'
+    }
+
     await api
-      .get('/api/bookings')
-      .expect(200)
-      .expect('Content-Type', /application\/json/)
-  
-    const res = await api.get('/api/bookings')
-    expect(res.body).toHaveLength(initialBookings.length)
-  
-    const addresses = res.body.map(i => i.address)
-    expect(addresses).toContain('123 rd')
-    expect(addresses).not.toContain('--- rd')
-  
-  }, 50000)
+      .put(`/api/bookings/${bookingId}`)
+      .send(dummyUpdateBooking)
 
-  test('create a client', async()=>{
-    const resUser = await api.post('/api/users')
-      .send(initialClient)
-    expect(resUser.body.name).toContain('linux')
-    const getAllClients = await api.get('/api/users')
-    expect(getAllClients.body).toHaveLength(1)
+    const watch = await api.get('/api/bookings')
+
+    console.log('updated',watch.body)
   })
 
-  
-  test('will return "token expired or invalid" when no token', async () => {
-    const resBooking = await api.post('/api/bookings')
-      .send(initialBookings[1])
-    expect(resBooking.body.error).toContain('token expired')
-  })
-})
 
-describe('retrieve bookings from server ',()=>{
-  test('get all bookings for a specific client, only with token',async()=>{
-
-    const user = await api.post('/api/users')
-      .send(clientA)
-    const userId = user.body.id
-
-    const resLogin = await api.post('/api/login')
-      .send({ username: 'clientA', password: 'clientA' })
-    const token=resLogin.body.token
-
-    let res = await api.get(`/api/users/${userId}`)
-    let clients = res.body
-    expect(clients).toHaveProperty('name')
-    expect(clients.bookings).toHaveLength(0)
-
-    // add one booking
-    await api.post('/api/bookings')
-      .set(auth(token))
-      .send(initialBookings[0])
-    res = await api.get(`/api/users/${userId}`)
-    clients = res.body
-    expect(clients.bookings).toHaveLength(1)
-    
-    await api.post('/api/bookings')
-      .set(auth(token))
-      .send(initialBookings[1])
-    res = await api.get(`/api/users/${userId}`)
-    clients = res.body
-    console.log(clients.bookings)
-    expect(clients.bookings).toHaveLength(2)
-    
-  },100000)
 })
 
 

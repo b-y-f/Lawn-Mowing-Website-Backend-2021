@@ -2,7 +2,7 @@ const booksRouter = require('express').Router()
 const Booking = require('../models/booking')
 
 booksRouter.get('/', async (req, res) => {
-  const bookings = await Booking.find({}).populate('client',{bookings:1})
+  const bookings = await Booking.find({}).populate('user',{bookings:1})
   res.json(bookings)
 })
 
@@ -20,7 +20,8 @@ booksRouter.post('/', async (req, res) => {
   const body = req.body
   const user = req.user
 
-  if (!req.token || !user.id) {
+
+  if (!req.token || !user._id) {
     return res.status(401).json({ error: 'token expired or invalid' })
   }
 
@@ -28,11 +29,14 @@ booksRouter.post('/', async (req, res) => {
     return res.status(400).json({ error: 'serviceItem missing' })
   }
 
+  // console.log('ok',body)
+
   const booking = new Booking({
+    bookingDate:body.bookingDate,
     serviceItem: body.serviceItem,
     address:body.address,
-    comment: body.comment,
-    client: user.id
+    adminComment: body.adminComment,
+    user: user._id
   })
 
   const savedBooking = await booking.save()
@@ -46,8 +50,19 @@ booksRouter.post('/', async (req, res) => {
 
 booksRouter.delete('/:id', (req, res, next) => {
   Booking.findOneAndDelete(req.params.id)
-    .then(deletedItem => {
-      res.json(deletedItem)
+    .then((booking) => {
+      res.json({message:`Deleted one booking: ${booking.id}`})
+    })
+    .catch(err => {
+      next(err)
+    })
+})
+
+booksRouter.put('/:id', (req, res, next) => {
+  const updateInfo = req.body
+  Booking.findByIdAndUpdate(req.params.id,updateInfo )
+    .then((booking) => {
+      res.json({message:`Updated the booking: ${booking.id}`})
     })
     .catch(err => {
       next(err)

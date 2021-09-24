@@ -23,7 +23,7 @@ describe('After signin, email and name will be send to my moogoDB', ()=>{
   })
 
   test('create new user..', async()=>{
-    const res = await api.post('/api/users').send(dummyUser)
+    const res = await api.post('/api/users').auth('tobi', 'learnboost').send(dummyUser)
     console.log(res.body)
   })
 

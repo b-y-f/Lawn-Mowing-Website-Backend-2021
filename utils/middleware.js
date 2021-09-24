@@ -1,6 +1,7 @@
 const logger = require('./logger')
-const Client = require('../models/user')
+const User = require('../models/user')
 const jwt = require('jsonwebtoken')
+const fs = require('fs')
 
 
 const requestLogger = (req, res, next) => {
@@ -27,10 +28,14 @@ const unknownEndpoint = (req, res, next) => {
 }
 
 const userExtractor = async (req, res, next) => {
+  const cert = fs.readFileSync('public.pem')  // get public key
+
   if (req.token) {
-    const decodedToken = jwt.verify(req.token, process.env.SECRET)
-    req.user = await Client.findById(decodedToken.id)
+    const decodedToken = jwt.verify(req.token, cert, { algorithms: ['RS256'] })
+    
+    req.user = await User.findOne({email:decodedToken.email}).exec()
   }
+
   next()
 }
 

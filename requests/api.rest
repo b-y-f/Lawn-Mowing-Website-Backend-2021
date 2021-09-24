@@ -1,5 +1,5 @@
 ### Test quotes put without login 
-POST http://localhost:3001/api/quotes 
+POST http://localhost:3001/api/bookings 
 Content-Type: application/json
 
 {
@@ -13,16 +13,6 @@ Content-Type: application/json
             "otherCost": 20
         }
     ],
-}
-
-### create client
-POST http://localhost:3001/api/clients
-Content-Type: application/json
-
-{
-    "username":"123",
-    "password":"123",
-    "name":"yifan"
 }
 
 ### Test quotes get
@@ -106,4 +96,13 @@ Content-Type: application/json
 {
     "username":"admin",
     "password" : "admin"
+}
+
+### create new user
+POST http://localhost:3001/api/bookings 
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImFlNTJiOGQ4NTk4N2U1OWRjYWM2MmJlNzg2YzcwZTAyMDcxN2I0MTEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYXV0aC1kZXYtNTNjOWIiLCJhdWQiOiJhdXRoLWRldi01M2M5YiIsImF1dGhfdGltZSI6MTYzMjQ0NTM5NSwidXNlcl9pZCI6ImRmTkx2MVdRMVVaRUw3MW5KMUpsRlhybm5pbzIiLCJzdWIiOiJkZk5MdjFXUTFVWkVMNzFuSjFKbEZYcm5uaW8yIiwiaWF0IjoxNjMyNDQ5MzIzLCJleHAiOjE2MzI0NTI5MjMsImVtYWlsIjoiMTIzQDEyMy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiMTIzQDEyMy5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.AEnc_xv3pOcgKwEMOneJTdND7mSnV-SMRe-PeRqzl0dyoMjXGnaJ0jc21VYkoZStsVFLlKihOUSqG4eKM3nnQddjsagt39PWXUT_xAA4BC0PSAqCgPof8NTeSmxjbOOaQmRMDOFmyJAefGruDnnkNRCL7Dg8oBldLgtBCm-By7KiZNBUMqLUyVUcE7t3P6Jc4W1bPOJ-tAWngHt_cOdvKUu_P5tScsaK-cD5WECISl7KmiVMzduXhAekr36YCNGIlJUOJumkeBmccl2HRPFsCg90705jokSsGxYNx6DRPDg1XyqWibvdvbk6MJ7ZXpPqxkvVuwRe_k3cb1XMlfED5A
+
+{
+    "address": "123 rd"
 }
