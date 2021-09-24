@@ -1,32 +1,35 @@
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
-const loginRouter = require('express').Router()
-const Client = require('../models/client')
+// NO need save passwork in my database since used firebase, 
+// also token expire can be confire in firebase
+// Only user basic information is stored in my DB
 
-loginRouter.post('/', async (req, res) => {
-  const body = req.body
-  const client = await Client.findOne({ username: body.username })
-  const passwordCorrect = client === null
-    ? false
-    : await bcrypt.compare(body.password, client.passwordHash)
 
-  if (!(client && passwordCorrect)) {
-    return res.status(401).json({
-      error: 'invalid username or password'
-    })
-  }
+// const jwt = require('jsonwebtoken')
+// const bcrypt = require('bcrypt')
+// const loginRouter = require('express').Router()
+// const Client = require('../models/user')
 
-  const clientToken = {
-    username: client.username,
-    id: client._id
-  }
+// loginRouter.post('/', async (req, res) => {
+//   const body = req.body
+//   const client = await Client.findOne({ username: body.username })
+//   const passwordCorrect = client === null
+//     ? false
+//     : await bcrypt.compare(body.password, client.passwordHash)
 
-  const googleApiKey = process.env.GOOGLE_MAPS_API_KEY
+//   if (!(client && passwordCorrect)) {
+//     return res.status(401).json({
+//       error: 'invalid username or password'
+//     })
+//   }
 
-  // TODO token expire with 1 hour
-  const token = jwt.sign(clientToken, process.env.SECRET)
+//   const clientToken = {
+//     username: client.username,
+//     id: client._id
+//   }
 
-  res.status(200).send({ token, username: client.username, name: client.name ,id: client._id,googleApiKey})
-})
+//   // TODO token expire with 1 hour
+//   const token = jwt.sign(clientToken, process.env.SECRET) 
 
-module.exports = loginRouter
+//   res.status(200).send({ token, username: client.username, name: client.name })
+// })
+
+// module.exports = loginRouter

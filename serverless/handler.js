@@ -1,7 +1,13 @@
 'use strict'
-require('dotenv').config({ path: '../.env' })
+require('dotenv').config({ path: './var.env' })
 const connectToDatabase = require('./db')
 const Quote = require('./quote.model')
+
+const headers = {
+  'Access-Control-Allow-Origin': '/path:*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT'
+}
 
 module.exports.create = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false
@@ -10,7 +16,8 @@ module.exports.create = (event, context, callback) => {
       .then(quote =>
         callback(null, {
           statusCode: 200,
-          body: JSON.stringify(quote)
+          body: JSON.stringify(quote),
+          headers
         })
       )
       .catch(err =>
@@ -31,7 +38,8 @@ module.exports.getOne = (event, context, callback) => {
       Quote.findById(event.pathParameters.id)
         .then(quote => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(quote)
+          body: JSON.stringify(quote),
+          headers
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
@@ -49,7 +57,8 @@ module.exports.getAll = (event, context, callback) => {
       Quote.find()
         .then(quotes => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(quotes)
+          body: JSON.stringify(quotes),
+          headers
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
@@ -67,7 +76,8 @@ module.exports.update = (event, context, callback) => {
       Quote.findByIdAndUpdate(event.pathParameters.id, JSON.parse(event.body), { new: true })
         .then(quote => callback(null, {
           statusCode: 200,
-          body: JSON.stringify(quote)
+          body: JSON.stringify(quote),
+          headers
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,
@@ -85,7 +95,8 @@ module.exports.delete = (event, context, callback) => {
       Quote.findByIdAndRemove(event.pathParameters.id)
         .then(quote => callback(null, {
           statusCode: 200,
-          body: JSON.stringify({ message: 'Removed quote with id: ' + quote.id, quote: quote })
+          body: JSON.stringify({ message: 'Removed quote with id: ' + quote.id, quote: quote }),
+          headers
         }))
         .catch(err => callback(null, {
           statusCode: err.statusCode || 500,

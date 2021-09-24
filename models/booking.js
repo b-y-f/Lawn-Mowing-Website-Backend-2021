@@ -1,26 +1,22 @@
 const mongoose = require('mongoose')
 
 const bookingSchema = new mongoose.Schema({
-  date: { type: Date, default: Date.now },
+  created: { type: Date, default: Date.now },
   address: String,
+  bookingDate: Date,
+  status: {type:String, default:'pending'},
   serviceItem: [
     {
       item: String,
-      unit: {
-        type: Number,
-        default: 0
-      },
-      whatUnit: String,
-      pricePerUnit: Number,
-      otherComment: String,
-      otherCost: Number
+      serviceComment: String,
+      worker:String
     }
   ],
   client: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Client'
   },
-  comment: String
+  adminComment: String
 })
 
 bookingSchema.set('toJSON', {

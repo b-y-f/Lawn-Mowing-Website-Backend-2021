@@ -1,18 +1,11 @@
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 
-const clientSchema = mongoose.Schema({
-  username: {
-    type: String,
-    unique: true,
-    required: true,
-    minlength: 3
-  },
+const userSchema = mongoose.Schema({
   name: String,
   address: String,
   phone: String,
   email: String,
-  passwordHash: String,
   bookings: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -21,9 +14,9 @@ const clientSchema = mongoose.Schema({
   ]
 })
 
-clientSchema.plugin(uniqueValidator)
+userSchema.plugin(uniqueValidator)
 
-clientSchema.set('toJSON', {
+userSchema.set('toJSON', {
   transform: (doc, returnedObj) => {
     returnedObj.id = returnedObj._id.toString()
     delete returnedObj._id
@@ -33,4 +26,4 @@ clientSchema.set('toJSON', {
 })
 
 
-module.exports = mongoose.model('Client', clientSchema)
+module.exports = mongoose.model('User', userSchema)

@@ -3,7 +3,10 @@ content-type: application/json
 
 {
   "name":"time test",
-  "location":"earth"
+  "location":"earth",
+  "email":"bbbbb8bbbb@e123.comww",
+  "phone":"123-345-1234",
+  "serviceItem":["gardening"]
 }
 
 ### test env
@@ -15,12 +18,7 @@ content-type: application/json
   "location":"earth",
   "email":"bbbbb8bbbb@e123.comww",
   "phone":"123-345-1234",
-  "serviceItem":[
-    {
-      "item":"gardening",
-      "unit": 143
-    }
-  ]
+  "serviceItem":["gardening"]
 }
 
 ### test env: get single

@@ -198,7 +198,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lawn-mowing-quote/dev/1631796315767-2021-09-16T12:45:15.767Z/lawn-mowing-quote.zip"
+                "S3Key": "serverless/lawn-mowing-quote/dev/1632122076668-2021-09-20T07:14:36.668Z/lawn-mowing-quote.zip"
               },
               "Handler": "handler.create",
               "Runtime": "nodejs14.x",
@@ -223,7 +223,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lawn-mowing-quote/dev/1631796315767-2021-09-16T12:45:15.767Z/lawn-mowing-quote.zip"
+                "S3Key": "serverless/lawn-mowing-quote/dev/1632122076668-2021-09-20T07:14:36.668Z/lawn-mowing-quote.zip"
               },
               "Handler": "handler.getOne",
               "Runtime": "nodejs14.x",
@@ -248,7 +248,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lawn-mowing-quote/dev/1631796315767-2021-09-16T12:45:15.767Z/lawn-mowing-quote.zip"
+                "S3Key": "serverless/lawn-mowing-quote/dev/1632122076668-2021-09-20T07:14:36.668Z/lawn-mowing-quote.zip"
               },
               "Handler": "handler.getAll",
               "Runtime": "nodejs14.x",
@@ -273,7 +273,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lawn-mowing-quote/dev/1631796315767-2021-09-16T12:45:15.767Z/lawn-mowing-quote.zip"
+                "S3Key": "serverless/lawn-mowing-quote/dev/1632122076668-2021-09-20T07:14:36.668Z/lawn-mowing-quote.zip"
               },
               "Handler": "handler.update",
               "Runtime": "nodejs14.x",
@@ -298,7 +298,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lawn-mowing-quote/dev/1631796315767-2021-09-16T12:45:15.767Z/lawn-mowing-quote.zip"
+                "S3Key": "serverless/lawn-mowing-quote/dev/1632122076668-2021-09-20T07:14:36.668Z/lawn-mowing-quote.zip"
               },
               "Handler": "handler.delete",
               "Runtime": "nodejs14.x",
@@ -316,54 +316,54 @@
               "DeleteLogGroup"
             ]
           },
-          "CreateLambdaVersionMiRnREOTWFa6kN2UCrfrh4u1mDZL70O0UnUA1a1svnM": {
+          "CreateLambdaVersionW5BntYof5e92LovyeM4O3vKsan9plPMCbsRUKZ4pmM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateLambdaFunction"
               },
-              "CodeSha256": "XNqJ0UV/jTX9OxwX3sEiYf65086PIOeQlpnXqgFR+Dk="
+              "CodeSha256": "9lvWg8iYlfue8/ZNWhARhvjsFUb1sCChwRUukv2vHRQ="
             }
           },
-          "GetOneLambdaVersionUrpY8QEqH2icWJZgnsCnNLlUlpdc9cPU1ahdUZPA": {
+          "GetOneLambdaVersionkW2QqZVqmcAOhCeuck9QkBGwpg8d2M1UlFEougDHBBQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetOneLambdaFunction"
               },
-              "CodeSha256": "XNqJ0UV/jTX9OxwX3sEiYf65086PIOeQlpnXqgFR+Dk="
+              "CodeSha256": "9lvWg8iYlfue8/ZNWhARhvjsFUb1sCChwRUukv2vHRQ="
             }
           },
-          "GetAllLambdaVersion4zc5pmYiznSX0HArDODdP6zIqclkZRkQOxICve5zIU": {
+          "GetAllLambdaVersionujVj3Aj0cTZlhzF5JkikCRSJ2cRmIbTVqijofSraF8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetAllLambdaFunction"
               },
-              "CodeSha256": "XNqJ0UV/jTX9OxwX3sEiYf65086PIOeQlpnXqgFR+Dk="
+              "CodeSha256": "9lvWg8iYlfue8/ZNWhARhvjsFUb1sCChwRUukv2vHRQ="
             }
           },
-          "UpdateLambdaVersionAgUqxLTDIEB5GZAmh8p9qJrO4F6xWQkgSHkpGwOl0Wo": {
+          "UpdateLambdaVersionFj8ZwBAIDE3WhDlxKvhxKtzu072WMIuVQ6ImZIv9es": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateLambdaFunction"
               },
-              "CodeSha256": "XNqJ0UV/jTX9OxwX3sEiYf65086PIOeQlpnXqgFR+Dk="
+              "CodeSha256": "9lvWg8iYlfue8/ZNWhARhvjsFUb1sCChwRUukv2vHRQ="
             }
           },
-          "DeleteLambdaVersionIqGouyUF8z2NR2QHl6rORtFypFcdknUbcWyDhSdV6sA": {
+          "DeleteLambdaVersionpMsI9LT4FjV3CRlhB6INhzVbmAutq8uhpBVdUpoM3U": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteLambdaFunction"
               },
-              "CodeSha256": "XNqJ0UV/jTX9OxwX3sEiYf65086PIOeQlpnXqgFR+Dk="
+              "CodeSha256": "9lvWg8iYlfue8/ZNWhARhvjsFUb1sCChwRUukv2vHRQ="
             }
           },
           "ApiGatewayRestApi": {
@@ -725,7 +725,7 @@
               "DeleteLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1631796297607": {
+          "ApiGatewayDeployment1632122059055": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -941,7 +941,7 @@
           "CreateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateLambdaVersionMiRnREOTWFa6kN2UCrfrh4u1mDZL70O0UnUA1a1svnM"
+              "Ref": "CreateLambdaVersionW5BntYof5e92LovyeM4O3vKsan9plPMCbsRUKZ4pmM"
             },
             "Export": {
               "Name": "sls-lawn-mowing-quote-dev-CreateLambdaFunctionQualifiedArn"
@@ -950,7 +950,7 @@
           "GetOneLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetOneLambdaVersionUrpY8QEqH2icWJZgnsCnNLlUlpdc9cPU1ahdUZPA"
+              "Ref": "GetOneLambdaVersionkW2QqZVqmcAOhCeuck9QkBGwpg8d2M1UlFEougDHBBQ"
             },
             "Export": {
               "Name": "sls-lawn-mowing-quote-dev-GetOneLambdaFunctionQualifiedArn"
@@ -959,7 +959,7 @@
           "GetAllLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetAllLambdaVersion4zc5pmYiznSX0HArDODdP6zIqclkZRkQOxICve5zIU"
+              "Ref": "GetAllLambdaVersionujVj3Aj0cTZlhzF5JkikCRSJ2cRmIbTVqijofSraF8"
             },
             "Export": {
               "Name": "sls-lawn-mowing-quote-dev-GetAllLambdaFunctionQualifiedArn"
@@ -968,7 +968,7 @@
           "UpdateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateLambdaVersionAgUqxLTDIEB5GZAmh8p9qJrO4F6xWQkgSHkpGwOl0Wo"
+              "Ref": "UpdateLambdaVersionFj8ZwBAIDE3WhDlxKvhxKtzu072WMIuVQ6ImZIv9es"
             },
             "Export": {
               "Name": "sls-lawn-mowing-quote-dev-UpdateLambdaFunctionQualifiedArn"
@@ -977,7 +977,7 @@
           "DeleteLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteLambdaVersionIqGouyUF8z2NR2QHl6rORtFypFcdknUbcWyDhSdV6sA"
+              "Ref": "DeleteLambdaVersionpMsI9LT4FjV3CRlhB6INhzVbmAutq8uhpBVdUpoM3U"
             },
             "Export": {
               "Name": "sls-lawn-mowing-quote-dev-DeleteLambdaFunctionQualifiedArn"
@@ -1133,7 +1133,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CreateLambdaVersionMiRnREOTWFa6kN2UCrfrh4u1mDZL70O0UnUA1a1svnM"
+        "versionLogicalId": "CreateLambdaVersionW5BntYof5e92LovyeM4O3vKsan9plPMCbsRUKZ4pmM"
       },
       "getOne": {
         "handler": "handler.getOne",
@@ -1168,7 +1168,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetOneLambdaVersionUrpY8QEqH2icWJZgnsCnNLlUlpdc9cPU1ahdUZPA"
+        "versionLogicalId": "GetOneLambdaVersionkW2QqZVqmcAOhCeuck9QkBGwpg8d2M1UlFEougDHBBQ"
       },
       "getAll": {
         "handler": "handler.getAll",
@@ -1203,7 +1203,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetAllLambdaVersion4zc5pmYiznSX0HArDODdP6zIqclkZRkQOxICve5zIU"
+        "versionLogicalId": "GetAllLambdaVersionujVj3Aj0cTZlhzF5JkikCRSJ2cRmIbTVqijofSraF8"
       },
       "update": {
         "handler": "handler.update",
@@ -1238,7 +1238,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "UpdateLambdaVersionAgUqxLTDIEB5GZAmh8p9qJrO4F6xWQkgSHkpGwOl0Wo"
+        "versionLogicalId": "UpdateLambdaVersionFj8ZwBAIDE3WhDlxKvhxKtzu072WMIuVQ6ImZIv9es"
       },
       "delete": {
         "handler": "handler.delete",
@@ -1273,7 +1273,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "DeleteLambdaVersionIqGouyUF8z2NR2QHl6rORtFypFcdknUbcWyDhSdV6sA"
+        "versionLogicalId": "DeleteLambdaVersionpMsI9LT4FjV3CRlhB6INhzVbmAutq8uhpBVdUpoM3U"
       }
     },
     "configValidationMode": "warn",
@@ -1297,7 +1297,7 @@
     "artifact": "/home/yifan/Lawn_Mowing_Website/Lawn-Mowing-Website-Backend-2021/serverless/.serverless/lawn-mowing-quote.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/lawn-mowing-quote/dev/1631796315767-2021-09-16T12:45:15.767Z",
+    "artifactDirectoryName": "serverless/lawn-mowing-quote/dev/1632122076668-2021-09-20T07:14:36.668Z",
     "artifact": "lawn-mowing-quote.zip"
   }
 }

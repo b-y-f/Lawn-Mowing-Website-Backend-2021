@@ -193,7 +193,7 @@ Invoice could similar to quote but more specific
  - [x] made page content markdown editable
 
 
- ## Week 7
+## Week 7
 
   **Date time**       : 23/08/2021 - 29/08/2021
 
@@ -203,10 +203,10 @@ Invoice could similar to quote but more specific
 
  - [x] Due to some bug appeared when I try to modify some of backend apis and better debug, I decide start to implement test driven development!!
  - [x] Add redux library to make state easier to manage
- - [ ] Make use of material UI to make quote app nicer
- - [ ] Google Api for address finding
- - [ ] user can edit bookings 1.edit 2. delete
- - [ ] add some states for booking
+ - [x] Make use of material UI to make quote app nicer
+ - [x] Google Api for address finding
+ - [x] user can edit bookings 1.edit 2. delete
+ - [x] add some states for booking
 
   **Some notes** :
  - Never create new function if old one not work solid
@@ -217,7 +217,7 @@ Invoice could similar to quote but more specific
  - Never make useEffect uses side effect resursively... 
 
 
- ## Week 8
+## Week 8
 
   **Date time**       : 13/09/2021 - 19/09/2021
 
@@ -229,23 +229,59 @@ Invoice could similar to quote but more specific
  - [x] add and test backend admin apis "/api/admin"
  - [x] change AWS api getway from REST to HTTP API to save faster speed and save money
  - [x] Add another serverless function submit quote to mongoDB(in the end migrate all quote Api to serverless)
- - [ ] Add a little bit style to booking item and quote item 
-
+ - [x] Add a little bit style to booking item and quote item 
+ - [x] Add some validation for all website form 
 
   **Some notes** :
  - I think for small business, serverless is the future, it is pointless to run server 7*24 for only 500 visit per day
+ 
  - So I am attempting to learn some concepts about microservices and serverless which could help me better adapt to contemporary devlopment environment.
+  
+ - __CORs__ is a new problem I encountered in this project when deploy local server to vercel's server, in future, this need be configured to make sure the project is access by some pointed domain for security solving issues.
+
+ - Next week, I want to do some research about lastest Google's "firebase" Api to improve the security and better manage user credentials.
 
 
 **Current Serverless APIs**
-http api :https://kv3kfkgvmj.execute-api.us-east-2.amazonaws.com/post-contact
+
+http api :
+
+https://kv3kfkgvmj.execute-api.us-east-2.amazonaws.com/post-contact
+
 restful:
+
+
   POST - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes
+
   GET - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes/{id}
+
   GET - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes
+
   PUT - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes/{id}
+  
   DELETE - https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes/{id}
 
+
+## Week 9
+
+  **Date time**       : 20/09/2021 - 26/09/2021
+
+ **Main propose**    : add manager access and admin can modify booking and quotes
+
+ **Plan tasks**      :
+
+ - [x] Used form-hook which could improve performance and feasibility to handle form in react
+ - [x] add and test backend admin apis "/api/admin"
+ - [x] change AWS api getway from REST to HTTP API to save faster speed and save money
+ - [x] Add another serverless function submit quote to mongoDB(in the end migrate all quote Api to serverless)
+ - [x] Add a little bit style to booking item and quote item 
+ - [x] Add some validation for all website form 
+ - [ ] Make client login with firebase and display a good UI
+
+  **Some notes** :
+  - Sep 16, 2021 material introduced their MUI core v5.00, I was using 4.0, so this week I updated to 5.0 to explore their new features.
+  - After reading some article about minimum usable views, I decide to make client booking layout to something focus only on functionalities. 
+  - This week I learnt useContext hook for pass user information cross whole application to make auth easier to modify.
 
 
 
