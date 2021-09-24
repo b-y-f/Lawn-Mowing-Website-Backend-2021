@@ -4,19 +4,17 @@ const app = require('../app')
 const api = supertest(app)
 
 const Booking = require('../models/booking')
-const Client = require('../models/client')
+const User = require('../models/user')
 
 const initialBookings = [
   {
+    bookingDate:new Date(),
     address: '123 rd',
     serviceItem: [
       {
         'item': 'LawnMow',
-        'unit': 23,
-        'whatUnit': 'Hours',
-        'pricePerUnit': 12,
-        'otherComment': 'Very tough evn plug $20',
-        'otherCost': 20
+        'serviceComment':'Jamse',
+        'worker':'jims'
       }
     ],
     comment: 'test!!!!!!'
@@ -26,21 +24,18 @@ const initialBookings = [
     serviceItem: [
       {
         'item': 'Others',
-        'unit': 23,
       }
     ],
   }
 ]
 
 const initialClient = {
-  username: 'byf',
-  password: 'byf',
+  email: 'byf@123.com',
   name: 'linux'
 }
 
 const clientA =  {
-  username: 'clientA',
-  password: 'clientA',
+  email: 'clientA@123.com',
   name: 'cA'
 }
 
@@ -52,7 +47,7 @@ const auth = (token) => {
 
 beforeEach(async () => {
   await Booking.deleteMany({})
-  await Client.deleteMany({})
+  await User.deleteMany({})
 
   let bookingObj = new Booking(initialBookings[0])
   await bookingObj.save()
@@ -60,7 +55,13 @@ beforeEach(async () => {
   await bookingObj.save()
 })
 
+// TODO rework
 describe('all related to add a booking', ()=>{
+
+  // test('check token when create new booking', async()=>{
+  //   await 
+  // })
+
   test('a booking can be added and returned by a client with valid token', async () => {
     await api
       .get('/api/bookings')
@@ -77,28 +78,13 @@ describe('all related to add a booking', ()=>{
   }, 50000)
 
   test('create a client', async()=>{
-    const resUser = await api.post('/api/clients')
+    const resUser = await api.post('/api/users')
       .send(initialClient)
     expect(resUser.body.name).toContain('linux')
-    const getAllClients = await api.get('/api/clients')
+    const getAllClients = await api.get('/api/users')
     expect(getAllClients.body).toHaveLength(1)
   })
-  
-  test('login --> book with token', async () => {
-    await api.post('/api/clients')
-      .send(initialClient)
-    const resLogin = await api.post('/api/login')
-      .send({username: 'byf', password: 'byf'})
-    expect(resLogin.body).toHaveProperty('token')
-  
-    const token = resLogin.body.token
-    const resBooking = await api.post('/api/bookings')
-      .set(auth(token))
-      .send(initialBookings[0])
-    console.log(resBooking.body.client)
-    expect(resBooking.body).toHaveProperty('comment')
-  
-  }, 50000)
+
   
   test('will return "token expired or invalid" when no token', async () => {
     const resBooking = await api.post('/api/bookings')
@@ -107,10 +93,10 @@ describe('all related to add a booking', ()=>{
   })
 })
 
-describe('retrieve bookings from server',()=>{
-  test('get all bookings for a specific client',async()=>{
+describe('retrieve bookings from server ',()=>{
+  test('get all bookings for a specific client, only with token',async()=>{
 
-    const user = await api.post('/api/clients')
+    const user = await api.post('/api/users')
       .send(clientA)
     const userId = user.body.id
 
@@ -118,7 +104,7 @@ describe('retrieve bookings from server',()=>{
       .send({ username: 'clientA', password: 'clientA' })
     const token=resLogin.body.token
 
-    let res = await api.get(`/api/clients/${userId}`)
+    let res = await api.get(`/api/users/${userId}`)
     let clients = res.body
     expect(clients).toHaveProperty('name')
     expect(clients.bookings).toHaveLength(0)
@@ -127,14 +113,14 @@ describe('retrieve bookings from server',()=>{
     await api.post('/api/bookings')
       .set(auth(token))
       .send(initialBookings[0])
-    res = await api.get(`/api/clients/${userId}`)
+    res = await api.get(`/api/users/${userId}`)
     clients = res.body
     expect(clients.bookings).toHaveLength(1)
     
     await api.post('/api/bookings')
       .set(auth(token))
       .send(initialBookings[1])
-    res = await api.get(`/api/clients/${userId}`)
+    res = await api.get(`/api/users/${userId}`)
     clients = res.body
     console.log(clients.bookings)
     expect(clients.bookings).toHaveLength(2)
