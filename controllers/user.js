@@ -23,7 +23,7 @@ userRouter.post('/', async (req, res, next) => {
 // get all bookings for this user
 userRouter.get('/', async(req,res,next)=>{
 
-  // console.log(req.token)
+  console.log(req.token)
   try {
     console.log(req.user)
     const user = await User

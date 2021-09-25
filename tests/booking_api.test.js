@@ -29,13 +29,12 @@ const dummyBooking2 = {
     {
       'item': 'ZZZ',
       'serviceComment':'Good!!!',
-      'worker':'bills'
     }
   ],
   adminComment: 'admin commment test!!!!!!'
 }
 
-const dummyUser = {email:'321@321.com',name:'yifan bill'}
+const dummyUser = {email:'1@1.com',name:'yifan bill',uid:'NqSozp3DRGXqyx2WQD8lllSDxff1'}
 
 const auth = (token) => {
   return {
@@ -78,8 +77,8 @@ describe('create new booking', ()=>{
     const res4 = await api.get('/api/users').set(auth(TOKEN))
       
 
-    // console.log(res4.body)
-    console.log(res3.body)
+    console.log(res4.body)
+    // console.log(res3.body)
 
   },10000)
 })
@@ -118,9 +117,9 @@ describe('update', ()=>{
         {
           'item': 'updated',
           'serviceComment':'Good!!!',
-          'worker':'test'
         }
       ],
+      worker:'billlllllllllll',
       adminComment: 'admin commment updated!!!!'
     }
 
