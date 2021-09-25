@@ -26,14 +26,18 @@ const unknownEndpoint = (req, res, next) => {
   res.status(404).json({ error: 'cant find endpoints' })
   next()
 }
-
+// token out user from token
 const userExtractor = async (req, res, next) => {
   const cert = fs.readFileSync('public.pem')  // get public key
 
   if (req.token) {
     const decodedToken = jwt.verify(req.token, cert, { algorithms: ['RS256'] })
-    
-    req.user = await User.findOne({email:decodedToken.email}).exec()
+
+    // console.log(decodedToken)
+    req.user = await User.findOne({uid:decodedToken.user_id}).exec()
+    if(!req.user){
+      return res.status(400).json({message: 'cant find by uid in mogoDB'})
+    }
   }
 
   next()
@@ -47,10 +51,19 @@ const tokenExtractor = (req, res, next) => {
   next()
 }
 
+const userAuth = (req,res,next) => {
+  const user = req.user
+  if (!req.token || !user._id) {
+    return res.status(401).json({ error: 'token expired or invalid' })
+  }
+  next()
+}
+
 module.exports = {
   requestLogger,
   errorHandler,
   unknownEndpoint,
   userExtractor,
-  tokenExtractor
+  tokenExtractor,
+  userAuth
 }

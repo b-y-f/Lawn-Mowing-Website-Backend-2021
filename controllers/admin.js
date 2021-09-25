@@ -9,6 +9,12 @@ adminRouter.get('/users',async(req,res)=>{
   res.json(users)
 })
 
+// userRouter.get('/', async (req, res) => {
+//   const users = await User.find({}).populate('bookings')
+
+//   res.json(users.map(user => user.toJSON()))
+// })
+
 adminRouter.post('/login', async (req, res) => {
   const body = req.body
   const admin = await Admin.findOne({ username: body.username })

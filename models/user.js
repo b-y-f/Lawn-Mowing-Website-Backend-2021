@@ -2,9 +2,12 @@ const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 
 const userSchema = mongoose.Schema({
-  name: String,
+  uid:String,
+  firstName: String,
+  lastName: String,
   address: String,
   phone: String,
+  photoURL:String,
   email: {type:String, unique:true},
   bookings: [
     {

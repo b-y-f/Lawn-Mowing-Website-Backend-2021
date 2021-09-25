@@ -9,9 +9,9 @@ const bookingSchema = new mongoose.Schema({
     {
       item: String,
       serviceComment: String,
-      worker:String
     }
   ],
+  worker:String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

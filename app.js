@@ -15,6 +15,7 @@ app.use(express.json())
 app.use(express.static('build'))
 app.use(middleware.requestLogger)
 app.use(middleware.tokenExtractor)
+app.use(middleware.userExtractor)
 
 mongoose.connect(config.MONGODB_URI, {
   useNewUrlParser: true,
@@ -29,10 +30,11 @@ mongoose.connect(config.MONGODB_URI, {
     logger.info('fail to connect MongoDB', err.message)
   })
 
-app.use('/api/bookings', middleware.userExtractor, bookingRouter)
+app.use('/api/bookings', bookingRouter)
 app.use('/api/users', userRouter)
 app.use('/api/admin',adminRouter)
 
+app.use(middleware.userAuth)
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 

@@ -7,7 +7,7 @@ const Booking = require('../models/booking')
 const User = require('../models/user')
 
 // 1 hour refresh
-const TOKEN ='eyJhbGciOiJSUzI1NiIsImtpZCI6ImFlNTJiOGQ4NTk4N2U1OWRjYWM2MmJlNzg2YzcwZTAyMDcxN2I0MTEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYXV0aC1kZXYtNTNjOWIiLCJhdWQiOiJhdXRoLWRldi01M2M5YiIsImF1dGhfdGltZSI6MTYzMjQ0NTM5NSwidXNlcl9pZCI6ImRmTkx2MVdRMVVaRUw3MW5KMUpsRlhybm5pbzIiLCJzdWIiOiJkZk5MdjFXUTFVWkVMNzFuSjFKbEZYcm5uaW8yIiwiaWF0IjoxNjMyNDU3MDM3LCJleHAiOjE2MzI0NjA2MzcsImVtYWlsIjoiMTIzQDEyMy5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiMTIzQDEyMy5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.kMMsRmzH4LKXw_Np4Ka3qiIRNJBEYsEXe-ayDf2WWbcX13JWiI9dxDuIwuITNtLfow-vuDSO5r9pJ0fRcpqQc5ZYXfbbliZT6IUENLl6_vStgbiY0bC6sOlchdbYN1sHT8g-nGtxiJR1X0xMMUbtsp0WN1ih9gLAOAjipvM7YMmDOnde4hh7wekhY3mCmLZJdy1NKbUyqfEclGNJG84mWrBDCHiyifQOl9A7Pg4eZE0bVVHaQJylQMuDk-LzIY8SPMmpS8vqEfN8ldZmMKmYspO7IV6rqYfxzIWNwHlMosk9IFzdP9rJXbAliH1Q6zXtZF165XE7Lw3HO1KXH6v_pw'
+const TOKEN =process.env.FIRE_TOKEN
 
 const dummyBooking = {
   bookingDate:new Date(),
@@ -35,10 +35,7 @@ const dummyBooking2 = {
   adminComment: 'admin commment test!!!!!!'
 }
 
-const dummyUser = {
-  email:'123@123.com',
-  name:'dummy222'
-}
+const dummyUser = {email:'321@321.com',name:'yifan bill'}
 
 const auth = (token) => {
   return {
@@ -60,6 +57,7 @@ describe('create new booking', ()=>{
   test('watch user', async()=>{
     const res= await api
       .get('/api/users')
+      .set(auth(TOKEN))
       
     console.log(res.body)
   })
@@ -75,12 +73,13 @@ describe('create new booking', ()=>{
       .set(auth(TOKEN))
       .send(dummyBooking2)
 
-    const res3 = await api.get('/api/bookings')
+    const res3 = await api.get('/api/bookings').set(auth(TOKEN))
 
-    const res4 = await api.get('/api/users')
+    const res4 = await api.get('/api/users').set(auth(TOKEN))
       
 
-    console.log(res3.body,res4.body)
+    // console.log(res4.body)
+    console.log(res3.body)
 
   },10000)
 })
@@ -127,11 +126,12 @@ describe('update', ()=>{
 
     await api
       .put(`/api/bookings/${bookingId}`)
+      .set(auth(TOKEN))
       .send(dummyUpdateBooking)
 
     const watch = await api.get('/api/bookings')
 
-    console.log('updated',watch.body)
+    console.log('updated:',watch.body)
   })
 
 

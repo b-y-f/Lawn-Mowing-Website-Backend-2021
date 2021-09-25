@@ -1,13 +1,18 @@
 const userRouter = require('express').Router()
 const User = require('../models/user')
 
-
+// this one is used for first time signup then 
+// I can match email address 
 userRouter.post('/', async (req, res, next) => {
   const body = req.body
 
   const user = new User({
-    name: body.name,
-    email: body.email
+    uid:body.uid,
+    email:body.email,
+    phone:body.phone,
+    firstName: body.firstName,
+    lastName:body.lastName,
+    photoURL:body.photoURL
   })
 
   await user.save()
@@ -15,30 +20,31 @@ userRouter.post('/', async (req, res, next) => {
     .catch(err => next(err))
 })
 
-userRouter.get('/', async (req, res) => {
-  const users = await User.find({}).populate('bookings')
-
-  res.json(users.map(user => user.toJSON()))
-})
-
-
 // get all bookings for this user
-userRouter.get('/:id', async(req,res,next)=>{
-  
+userRouter.get('/', async(req,res,next)=>{
+
+  // console.log(req.token)
   try {
-    const users = await User.findById(req.params.id).populate('bookings')
-    res.json(users)
+    console.log(req.user)
+    const user = await User
+      .findById(req.user._id)
+      .populate('bookings')
+
+    res.json(user)
   } catch (error) {
     next(error)
   }
 })
 
 // update information for this user
-userRouter.put('/:id', async(req,res,next)=>{
+userRouter.put('/', async(req,res,next)=>{
   const updateInfo = req.body
+
   try {
-    const updatedUser = await User.findByIdAndUpdate(req.params.id,updateInfo)
+    const updatedUser = await User.findOneAndUpdate(req.user_id,updateInfo)
     res.json(updatedUser)
+    console.log(updatedUser)
+
   } catch (error) {
     next(error)
   }

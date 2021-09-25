@@ -4,8 +4,8 @@
   "description": "About",
   "main": "index.js",
   "engines": {
-    "node":"16.7",
-    "npm":"7.21"
+    "node": "16.7",
+    "npm": "7.21"
   },
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
