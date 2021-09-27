@@ -31,7 +31,7 @@ booksRouter.post('/', async (req, res) => {
 
   // console.log('ok',body)
 
-  // console.log(user._id)
+  console.log('user watch',user)
 
   const booking = new Booking({
     bookingDate:body.bookingDate,
