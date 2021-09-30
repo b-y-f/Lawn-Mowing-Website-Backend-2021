@@ -8,8 +8,8 @@
     "npm": "7.21"
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
-    "start": "cross-env NODE_ENV=production node index.js",
+    "test": "NODE_ENV=test jest --verbose --runInBand",
+    "start": "NODE_ENV=production node index.js",
     "lint": "eslint .",
     "dev": "NODE_ENV=development nodemon index.js",
     "deploy": "git push heroku main",
