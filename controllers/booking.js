@@ -50,10 +50,11 @@ booksRouter.post('/', async (req, res) => {
 })
 
 booksRouter.delete('/:id', (req, res, next) => {
-  
-  Booking.findOneAndDelete(req.params.id)
-    .then((booking) => {
-      res.json({message:`Deleted one booking: ${booking.id}`})
+
+  Booking.findByIdAndDelete(req.params.id)
+    .then(() => {
+      // console.log(booking)
+      res.json({message:'Removed booking success'})  
     })
     .catch(err => {
       next(err)

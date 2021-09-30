@@ -86,7 +86,7 @@ New article
 - Lawn mowing
 - Gardening
 - Remove garbage
-- Hedge triming
+- Hedge trimming
 - Become Franchise>>>Enquiry>>>after communicate>>>join team
 - Booking >>> Quote
 
@@ -266,23 +266,53 @@ restful:
 
   **Date time**       : 20/09/2021 - 26/09/2021
 
- **Main propose**    : add manager access and admin can modify booking and quotes
+ **Main propose**    : Modify UI for user login and add firebase 
 
  **Plan tasks**      :
 
- - [x] Used form-hook which could improve performance and feasibility to handle form in react
- - [x] add and test backend admin apis "/api/admin"
- - [x] change AWS api getway from REST to HTTP API to save faster speed and save money
- - [x] Add another serverless function submit quote to mongoDB(in the end migrate all quote Api to serverless)
- - [x] Add a little bit style to booking item and quote item 
- - [x] Add some validation for all website form 
- - [ ] Make client login with firebase and display a good UI
+- [x] Make the client log in with Firebase and display useful content. UI design a mobile / desktop friendly UI; because it is for clients to use, it should be simple and include all necessary booking elements.
+- [x] change the backend API to use the firebase feature 
+- [x] Increase the number of service options.
+- [x] To manage the render of the user booking page, use redux.
+- [x] Client bookings should have statuses such as "pending," "approved," "declined," and so on. Because the company's location is too far away for some of the bookings. That booking could be declined by the booking manager.
+- [x] After the booking is completed, the worker's name will appear on the client's booking card.
 
   **Some notes** :
-  - Sep 16, 2021 material introduced their MUI core v5.00, I was using 4.0, so this week I updated to 5.0 to explore their new features.
-  - After reading some article about minimum usable views, I decide to make client booking layout to something focus only on functionalities. 
-  - This week I learnt useContext hook for pass user information cross whole application to make auth easier to modify.
+- On September 16, 2021, material released their MUI core v5.00; I was using 4.0 at the time, so I updated to 5.0 this week to explore their new features.
+- After reading an article about minimum usable views, I decided to redesign the client booking layout to focus solely on functionalities.
+- This week, I learned how to use the useContext hook to pass user information across the entire application to make auth easier to modify. Previously, I used the localStage function in JS, but with the useContext hook, managing all the user information is much easier.
+- The API for post and get all is now /api/client/ without any user id, thanks to Google Firebase, which has improved server-side authentication.
+- I want add one more feature: manager dashboard, but no more time remain. So better make it simple.
 
+## Week 10
+
+**Date time**       : 27/09/2021 - 03/10/2021
+
+**Main propose**    : Finish user booking state part and start admin layout 
+
+**Plan tasks**      :
+
+- [x] put all booking state to redux store
+- [x] add notification UI and give notification global message with the help of redux
+- [x] finish filter,sort, search functions
+- [x] start building management dashboard
+- [ ] plan to build an admin dashboard for data visualization and quote management
+- [ ] add rating for booking database
+
+
+**Some notes about redux** :
+
+Redux is a library that could be used to replace `useState` which manage state globally by just adding some code in index and create a store.js to distribute the states.
+
+To get redux work or control state, we need assign `ACTION` to it. An `ACTION` normally have a name that is some description of that action we would call later and a payload which carry the additional data we would modified. We also need a reducer to listening the `ACTION` and make change of state based on the `ACTION`. Normally like this: `function name(state, action){switch...}` 
+
+Then we can use `useDispatch()` hook to give reducer an `ACTION` to update the state, then if we want to use the state we use `useSelector()` to call that state's values.
+
+**Some notes about controlled components** :
+
+I was encountered with uncontrolled component problem when I was code for reset after add Booking to booking list, every time when I reset booking form it will have error in console, but everything works fine, after spend whole night debugging, I finally found that I should ensure the `checked` attribute of CheckBox is not undefined. 
+
+React handle element different with traditional DOM, in react everything mutable should be stored in state properties, this is so called controlled. But user still can use `ref` to add value to a uncontrolled element.  
 
 
 # Lawn mowing service website
@@ -315,10 +345,10 @@ System: Unix
 
 ### Website development
 
-|Front-end frame |  Back-end frame| Package manager| Databse
-|--- | --- | --- | ---
- |NEXT.js | express.js| npm|MongoDB
- |React.js| |
+| Front-end frame | Back-end frame | Package manager | Databse |
+| --------------- | -------------- | --------------- | ------- |
+| NEXT.js         | express.js     | npm             | MongoDB |
+| React.js        |                |
 
 
 ### Website deployment

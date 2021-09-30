@@ -23,14 +23,14 @@ userRouter.post('/', async (req, res, next) => {
 // get all bookings for this user
 userRouter.get('/', async(req,res,next)=>{
 
-  console.log(req.token)
+  console.log('user',req.user)
   try {
-    console.log(req.user)
     const user = await User
       .findById(req.user._id)
       .populate('bookings')
 
     res.json(user)
+    console.log(user)
   } catch (error) {
     next(error)
   }
@@ -41,9 +41,10 @@ userRouter.put('/', async(req,res,next)=>{
   const updateInfo = req.body
 
   try {
-    const updatedUser = await User.findOneAndUpdate(req.user_id,updateInfo)
+    console.log('current logged in user:',req.user)
+    const updatedUser = await User.findOneAndUpdate({uid:req.user.uid},updateInfo)
     res.json(updatedUser)
-    console.log(updatedUser)
+    // console.log('updatedUser',updatedUser)
 
   } catch (error) {
     next(error)
