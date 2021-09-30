@@ -8,10 +8,10 @@
     "npm": "7.21"
   },
   "scripts": {
-    "test": "NODE_ENV=test jest --verbose --runInBand",
-    "start": "NODE_ENV=production node index.js",
+    "test": "jest --verbose --runInBand",
+    "start": "node index.js",
     "lint": "eslint .",
-    "dev": "NODE_ENV=development nodemon index.js",
+    "dev": "nodemon index.js",
     "deploy": "git push heroku main",
     "build:ui": "rm -rf build && cd ../Lawn-Mowing-Website-Frontend-2021/ && npm run build --prod && cp -r build ../Lawn-Mowing-Website-Backend-2021/",
     "deploy:full":"npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy"
