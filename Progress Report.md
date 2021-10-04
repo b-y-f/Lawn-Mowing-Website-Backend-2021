@@ -296,8 +296,8 @@ restful:
 - [x] add notification UI and give notification global message with the help of redux
 - [x] finish filter,sort, search functions
 - [x] start building management dashboard
-- [ ] plan to build an admin dashboard for data visualization and quote management
-- [ ] add rating for booking database
+- [x] plan to build an admin dashboard for data visualization and quote management
+- [x] add rating for booking database
 
 
 **Some notes about redux** :
@@ -313,6 +313,30 @@ Then we can use `useDispatch()` hook to give reducer an `ACTION` to update the s
 I was encountered with uncontrolled component problem when I was code for reset after add Booking to booking list, every time when I reset booking form it will have error in console, but everything works fine, after spend whole night debugging, I finally found that I should ensure the `checked` attribute of CheckBox is not undefined. 
 
 React handle element different with traditional DOM, in react everything mutable should be stored in state properties, this is so called controlled. But user still can use `ref` to add value to a uncontrolled element.  
+
+**Plan for next week** :
+
+After the those long term learning and building website, I found the easiest and fastest way is to build a website with some framework then provide some API to them and make those template render some data like visualization. So in next week I am going to build other JAMStack admin site to visualize and control the data with serverless API. I think that would be easy and fast finish of this project.
+
+
+
+## Week 11
+
+**Date time**       : 04/10/2021 - 10/10/2021
+
+**Main propose**    : Finish all the functions and related to backend management, test it
+
+**Plan tasks**      :
+
+- [x] Data visualization in admin dashboard
+- [ ] User quotes management 
+- [ ] User booking management
+- [ ] change the token verification from JWT to google firebase admin to better control the security, to save work of update .pem and set certification( google will update public key two week) 
+
+**Note: Serverless**
+
+This week I learned more about serverless framework, which is like aws cli, a third party serverless app designed for to enable user easy and fast to configured and deploy serverless function from local into cloud 
+
 
 
 # Lawn mowing service website
@@ -345,10 +369,10 @@ System: Unix
 
 ### Website development
 
-| Front-end frame | Back-end frame | Package manager | Databse |
-| --------------- | -------------- | --------------- | ------- |
-| NEXT.js         | express.js     | npm             | MongoDB |
-| React.js        |                |
+| Front-end frame | Back-end frame | Package manager | Database |
+| --------------- | -------------- | --------------- | -------- |
+| NEXT.js         | express.js     | npm             | MongoDB  |
+| React.js        | AWS Lambda     |                 | DynamoDB |
 
 
 ### Website deployment

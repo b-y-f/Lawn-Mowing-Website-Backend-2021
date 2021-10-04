@@ -1,7 +1,6 @@
 const logger = require('./logger')
 const User = require('../models/user')
-const jwt = require('jsonwebtoken')
-const fs = require('fs')
+const admin = require('./firebaseAdmin')
 
 
 const requestLogger = (req, res, next) => {
@@ -27,19 +26,24 @@ const unknownEndpoint = (req, res, next) => {
   next()
 }
 // token out user from token
-const userExtractor = async (req, res, next) => {
-  const cert = fs.readFileSync('public.pem')  // get public key
+const userExtractor = async(req, res, next) => {
+
+  // console.log('token: ',req.token)
 
   if (req.token) {
-    const decodedToken = jwt.verify(req.token, cert, { algorithms: ['RS256'] })
+    const res = await admin
+      .auth()
+      .verifyIdToken(req.token)
+      .catch(err=>console.log(err))
+    // console.log(res)
+    req.user = await User.findOne({uid:res.uid}).exec()
 
-    // console.log(decodedToken)
-    req.user = await User.findOne({uid:decodedToken.user_id}).exec()
     if(!req.user){
-      return res.status(400).json({message: 'cant find by uid in mogoDB'})
+      console.log('user: ',req.user)
+      return res.status(400).json({message: 'cant find by uid in mongoDB'})
     }
-  }
 
+  }
   next()
 }
 
