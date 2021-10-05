@@ -1,0 +1,47 @@
+service: lawn-mowing-booking
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  region: us-east-2
+
+functions:
+  create:
+    handler: handler.create
+    events:
+      - http:
+          method: post
+          path: bookings
+          cors: true
+  getOne:
+    handler: handler.getOne
+    events:
+      - http:
+          path: bookings/{id}
+          method: get
+          cors: true
+  getAll:
+    handler: handler.getAll 
+    events:
+      - http:
+          path: bookings
+          method: get
+          cors: true
+  update:
+    handler: handler.update 
+    events:
+      - http:
+          path: bookings/{id}
+          method: put
+          cors: true
+  delete:
+    handler: handler.delete
+    events:
+      - http:
+          path: bookings/{id} 
+          method: delete
+          cors: true
+
+plugins:
+  - serverless-offline # adding the plugin to be able to run the offline emulation

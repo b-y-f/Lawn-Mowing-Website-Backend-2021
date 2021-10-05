@@ -71,20 +71,31 @@ The main thing the project to me is to explore and make use of latest developmen
 
 ### Back-end
 
-| Tech                         | Description                                                                             |
-| ---------------------------- | --------------------------------------------------------------------------------------- |
-| Node.js                      | Manage the APIs for booking, quotes and client users                                    |
-| AWS Lambda service & Gateway | Provide serverless API                                                                  |
-| MongoDB & mongoose           | NoSQL database to store website data, with mongoose to better control schema            |
-| JWT token                    | Decode token send by firebase and extract user information from it(User Identification) |
-| Jest + supertest             | test APIs                                                                               |
-| DynamoDB + AWS SNS           | Push email to me after viewer send form contact me                                      |
-| Heroku                       | Deploy backend on server and provide a domain                                           |
-| ~~Bcrypt~~                   | ~~encrypt pass work to protect user privacy in database abandoned after use firebase~~  |
+| Tech                                     | Description                                                                                 |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Node.js                                  | Manage the APIs for booking, quotes and client users                                        |
+| AWS Lambda service & Gateway             | Provide serverless API                                                                      |
+| MongoDB & mongoose                       | NoSQL database to store website data, with mongoose to better control schema                |
+| Jest + supertest                         | test APIs                                                                                   |
+| DynamoDB + AWS SNS                       | Push email to me after viewer send form contact me                                          |
+| Heroku                                   | Deploy backend on server and provide a domain                                               |
+| ~~Bcrypt~~                               | ~~encrypt pass work to protect user privacy in database abandoned after use firebase~~      |
+| ~~JWT token~~(replaced by firebaseAdmin) | ~~Decode token send by firebase and extract user information from it(User Identification)~~ |
+
 
 
 
 ## Include, towards the end, a discussion of the challenges you have encountered.  How/did you overcome them?
+
+Time schedule is my biggest problem, I split the huge project into many small tasks and making todo list for each tasks, to control the time and schedule each one, but sometime one small bug could take a long time. So in future's project I should learn some useful testing tools to test driving development more professional.
+
+No much function in admin management system, I was planning to add in app email and invoice sending application but got no time lift.
+
+The project is more like a macro one includes everything but not perfection in very details, so I think I should focus on more micro function more in future.
+
+Should use and retrieve more data from user, since the data are valuable nowadays, business need that data to analysis their client's behaviors to be further give the service they need.  
+
+
 
 
 

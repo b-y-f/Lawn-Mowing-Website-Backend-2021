@@ -335,7 +335,10 @@ After the those long term learning and building website, I found the easiest and
 
 **Note: Serverless**
 
-This week I learned more about serverless framework, which is like aws cli, a third party serverless app designed for to enable user easy and fast to configured and deploy serverless function from local into cloud 
+Explored about FaaS(function as a service)
+
+This week I learned more about serverless framework, which is like aws cli, a third party serverless app designed for to enable user easy and fast to configured and deploy serverless function from local into cloud.
+
 
 
 
