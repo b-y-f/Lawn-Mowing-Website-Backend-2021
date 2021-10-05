@@ -1,3 +1,21 @@
+### ============================booking==============================
+### allow admin change statues
+PUT http://localhost:3000/dev/bookings/615514cf31fc2d6def624a40
+content-type: application/json
+
+{
+  "status":"approved"
+}
+
+### allow manager delete booking
+DELETE http://localhost:3000/dev/bookings/615514cf31fc2d6def624a40
+
+### allow manager
+
+
+
+
+### =============================quote===========================
 POST https://j1ktcuphqg.execute-api.us-east-2.amazonaws.com/dev/quotes HTTP/1.1
 content-type: application/json
 

@@ -1,4 +1,5 @@
 'use strict'
+
 require('dotenv').config({ path: './var.env' })
 const connectToDatabase = require('./db')
 const Booking = require('./booking.model')
@@ -68,6 +69,7 @@ module.exports.getAll = (event, context, callback) => {
     })
 }
 
+// TODO allow admin change statues
 module.exports.update = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false
 
