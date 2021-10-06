@@ -329,16 +329,19 @@ After the those long term learning and building website, I found the easiest and
 **Plan tasks**      :
 
 - [x] Data visualization in admin dashboard
-- [ ] User quotes management 
-- [ ] User booking management
-- [ ] change the token verification from JWT to google firebase admin to better control the security, to save work of update .pem and set certification( google will update public key two week) 
+- [x] User quotes management 
+- [x] User booking management
+- [x] change the token verification from JWT to google firebase admin to better control the security, to save work of update .pem and set certification( google will update public key two week) 
 
-**Note: Serverless**
-
-Explored about FaaS(function as a service)
+**Note: Serverless(FaaS)**
 
 This week I learned more about serverless framework, which is like aws cli, a third party serverless app designed for to enable user easy and fast to configured and deploy serverless function from local into cloud.
 
+Under the help of offline plugin, the debug is not a problem. But there are some shortage in serverless I find when I was deploy it, when make more services I have to initial multiple serverless functions otherwise rename could be a problem. 
+
+**Fast development with template**
+
+During this week's development, I found go with a template also a good learn experience , since the template are build by some professionals in front-end area, they are using some advanced technologies, good/clean coding styles and they provide a developer friendly interface for developer like me to reuse and modify their code without much headache.     
 
 
 

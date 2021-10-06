@@ -5,7 +5,7 @@ const connectToDatabase = require('./db')
 const Booking = require('./booking.model')
 
 const headers = {
-  'Access-Control-Allow-Origin': '/path:*',
+  'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Content-Type',
   'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT'
 }

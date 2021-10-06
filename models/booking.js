@@ -4,6 +4,7 @@ const bookingSchema = new mongoose.Schema({
   created: { type: Date, default: Date.now },
   address: String,
   bookingDate: Date,
+  rating:{ type: Number, default: 3 },
   status: {type:String, default:'pending'},
   serviceItem: [
     {
