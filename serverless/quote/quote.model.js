@@ -3,6 +3,11 @@ const mongoose = require('mongoose')
 const quoteSchema = new mongoose.Schema({
   name:String,
   location:String,
+  address_components:[{
+    long_name:String,
+    short_name:String,
+    types:[String]
+  }],
   date: { type: Date, default: Date.now },
   hasReplied: {type:Boolean, default: false},
   isUrgent: {type:Boolean, default: false},
