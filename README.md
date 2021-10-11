@@ -79,6 +79,7 @@ The main thing the project to me is to explore and make use of latest developmen
 | Jest + supertest                         | test APIs                                                                                   |
 | DynamoDB + AWS SNS                       | Push email to me after viewer send form contact me                                          |
 | Heroku                                   | Deploy backend on server and provide a domain                                               |
+| Firebase admin                           | Used for decode and refresh the public key for auth(`uerIdToken`)                           |
 | ~~Bcrypt~~                               | ~~encrypt pass work to protect user privacy in database abandoned after use firebase~~      |
 | ~~JWT token~~(replaced by firebaseAdmin) | ~~Decode token send by firebase and extract user information from it(User Identification)~~ |
 
@@ -93,7 +94,11 @@ No much function in admin management system, I was planning to add in app email 
 
 The project is more like a macro one includes everything but not perfection in very details, so I think I should focus on more micro function more in future.
 
-Should use and retrieve more data from user, since the data are valuable nowadays, business need that data to analysis their client's behaviors to be further give the service they need.  
+Should use and retrieve more data from user and make more data orientated for admin manage page, since the data are valuable nowadays, business need that data to analysis their client's behaviors to be further give the service they need. 
+
+During this project I found for front-end side we should focus on build small and functional component/library that could be reused by others to save our time. People could build their project on the top of your component and concentrate on more important things rather than waste many time in adjust detailed styles.   
+
+
 
 
 

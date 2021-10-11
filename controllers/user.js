@@ -30,7 +30,7 @@ userRouter.get('/', async(req,res,next)=>{
       .populate('bookings')
 
     res.json(user)
-    console.log(user)
+    console.log('user data in server ',user)
   } catch (error) {
     next(error)
   }

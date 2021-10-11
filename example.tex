@@ -1,0 +1,572 @@
+%%
+% Copyright (c) 2017 - 2021, Pascal Wagler;
+% Copyright (c) 2014 - 2021, John MacFarlane
+%
+% All rights reserved.
+%
+% Redistribution and use in source and binary forms, with or without
+% modification, are permitted provided that the following conditions
+% are met:
+%
+% - Redistributions of source code must retain the above copyright
+% notice, this list of conditions and the following disclaimer.
+%
+% - Redistributions in binary form must reproduce the above copyright
+% notice, this list of conditions and the following disclaimer in the
+% documentation and/or other materials provided with the distribution.
+%
+% - Neither the name of John MacFarlane nor the names of other
+% contributors may be used to endorse or promote products derived
+% from this software without specific prior written permission.
+%
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+% "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+% LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+% FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+% COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+% BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+% LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+% CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+% LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+% ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+% POSSIBILITY OF SUCH DAMAGE.
+%%
+
+%%
+% This is the Eisvogel pandoc LaTeX template.
+%
+% For usage information and examples visit the official GitHub page:
+% https://github.com/Wandmalfarbe/pandoc-latex-template
+%%
+
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*,table}{xcolor}
+%
+\documentclass[
+  paper=a4,
+  ,captions=tableheading
+]{scrartcl}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\definecolor{default-linkcolor}{HTML}{A50000}
+\definecolor{default-filecolor}{HTML}{A50000}
+\definecolor{default-citecolor}{HTML}{4077C0}
+\definecolor{default-urlcolor}{HTML}{4077C0}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Lawn Mowing website fullstack},
+  pdfauthor={Bill},
+  pdfkeywords={Fullstack, React, Lawn mowing, Node.js, Serverless},
+  hidelinks,
+  breaklinks=true,
+  pdfcreator={LaTeX via pandoc with the Eisvogel template}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=2.5cm,includehead=true,includefoot=true,centering,]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+% add backlinks to footnote references, cf. https://tex.stackexchange.com/questions/302266/make-footnote-clickable-both-ways
+\usepackage{footnotebackref}
+\usepackage[normalem]{ulem}
+% Avoid problems with \sout in headers with hyperref
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+% Make use of float-package and set default placement for figures to H.
+% The option H means 'PUT IT HERE' (as  opposed to the standard h option which means 'You may put it here if you like').
+\usepackage{float}
+\floatplacement{figure}{H}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Lawn Mowing website fullstack}
+\author{Bill}
+\date{2021-10-10}
+
+
+
+%%
+%% added
+%%
+
+%
+% language specification
+%
+% If no language is specified, use English as the default main document language.
+%
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=english]{babel}
+\else
+    % Workaround for bug in Polyglossia that breaks `\familydefault` when `\setmainlanguage` is used.
+  % See https://github.com/Wandmalfarbe/pandoc-latex-template/issues/8
+  % See https://github.com/reutenauer/polyglossia/issues/186
+  % See https://github.com/reutenauer/polyglossia/issues/127
+  \renewcommand*\familydefault{\sfdefault}
+    % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\fi
+
+
+
+%
+% for the background color of the title page
+%
+
+%
+% break urls
+%
+\PassOptionsToPackage{hyphens}{url}
+
+%
+% When using babel or polyglossia with biblatex, loading csquotes is recommended
+% to ensure that quoted texts are typeset according to the rules of your main language.
+%
+\usepackage{csquotes}
+
+%
+% captions
+%
+\definecolor{caption-color}{HTML}{777777}
+\usepackage[font={stretch=1.2}, textfont={color=caption-color}, position=top, skip=4mm, labelfont=bf, singlelinecheck=false, justification=raggedright]{caption}
+\setcapindent{0em}
+
+%
+% blockquote
+%
+\definecolor{blockquote-border}{RGB}{221,221,221}
+\definecolor{blockquote-text}{RGB}{119,119,119}
+\usepackage{mdframed}
+\newmdenv[rightline=false,bottomline=false,topline=false,linewidth=3pt,linecolor=blockquote-border,skipabove=\parskip]{customblockquote}
+\renewenvironment{quote}{\begin{customblockquote}\list{}{\rightmargin=0em\leftmargin=0em}%
+\item\relax\color{blockquote-text}\ignorespaces}{\unskip\unskip\endlist\end{customblockquote}}
+
+%
+% Source Sans Pro as the de­fault font fam­ily
+% Source Code Pro for monospace text
+%
+% 'default' option sets the default
+% font family to Source Sans Pro, not \sfdefault.
+%
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+    \usepackage[default]{sourcesanspro}
+  \usepackage{sourcecodepro}
+  \else % if not pdftex
+    \usepackage[default]{sourcesanspro}
+  \usepackage{sourcecodepro}
+
+  % XeLaTeX specific adjustments for straight quotes: https://tex.stackexchange.com/a/354887
+  % This issue is already fixed (see https://github.com/silkeh/latex-sourcecodepro/pull/5) but the
+  % fix is still unreleased.
+  % TODO: Remove this workaround when the new version of sourcecodepro is released on CTAN.
+  \ifxetex
+    \makeatletter
+    \defaultfontfeatures[\ttfamily]
+      { Numbers   = \sourcecodepro@figurestyle,
+        Scale     = \SourceCodePro@scale,
+        Extension = .otf }
+    \setmonofont
+      [ UprightFont    = *-\sourcecodepro@regstyle,
+        ItalicFont     = *-\sourcecodepro@regstyle It,
+        BoldFont       = *-\sourcecodepro@boldstyle,
+        BoldItalicFont = *-\sourcecodepro@boldstyle It ]
+      {SourceCodePro}
+    \makeatother
+  \fi
+  \fi
+
+%
+% heading color
+%
+\definecolor{heading-color}{RGB}{40,40,40}
+\addtokomafont{section}{\color{heading-color}}
+% When using the classes report, scrreprt, book,
+% scrbook or memoir, uncomment the following line.
+%\addtokomafont{chapter}{\color{heading-color}}
+
+%
+% variables for title, author and date
+%
+\usepackage{titling}
+\title{Lawn Mowing website fullstack}
+\author{Bill}
+\date{2021-10-10}
+
+%
+% tables
+%
+
+\definecolor{table-row-color}{HTML}{F5F5F5}
+\definecolor{table-rule-color}{HTML}{999999}
+
+%\arrayrulecolor{black!40}
+\arrayrulecolor{table-rule-color}     % color of \toprule, \midrule, \bottomrule
+\setlength\heavyrulewidth{0.3ex}      % thickness of \toprule, \bottomrule
+\renewcommand{\arraystretch}{1.3}     % spacing (padding)
+
+
+%
+% remove paragraph indention
+%
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+%
+%
+% Listings
+%
+%
+
+
+%
+% header and footer
+%
+\usepackage{fancyhdr}
+
+\fancypagestyle{eisvogel-header-footer}{
+  \fancyhead{}
+  \fancyfoot{}
+  \lhead[2021-10-10]{Lawn Mowing website fullstack}
+  \chead[]{}
+  \rhead[Lawn Mowing website fullstack]{2021-10-10}
+  \lfoot[\thepage]{Bill}
+  \cfoot[]{}
+  \rfoot[Bill]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+\pagestyle{eisvogel-header-footer}
+
+%%
+%% end added
+%%
+
+\begin{document}
+
+%%
+%% begin titlepage
+%%
+
+%%
+%% end titlepage
+%%
+
+
+
+\hypertarget{lawn-mowing-website-fullstack}{%
+\section{Lawn Mowing website
+fullstack}\label{lawn-mowing-website-fullstack}}
+
+\hypertarget{description-of-your-project.-if-your-project-was-completely-finished-how-would-you-imagine-that-people-would-use-it}{%
+\subsection{Description of your project. If your project was completely
+finished, how would you imagine that people would use
+it?}\label{description-of-your-project.-if-your-project-was-completely-finished-how-would-you-imagine-that-people-would-use-it}}
+
+The project is about creating a simple full-stack website for a lawn
+mowing service, which consists of three parts: a landing page, a user
+booking page, and a manager dashboard.
+
+\textbf{Landing page} is for lawn mowing business owners to marketing
+their service to wide variety of people need those serves, and good for
+SEO, lawn mowing owner can frequently browse it and send question or
+quotes to website owner or sells consultant. It should be safe and fast
+loading and beautiful to attract more traffic from internet to get more
+people click it. Then I should show viewer the service it can provided
+the work case they finished. Also site manager could convenient to add
+or remove service when needed.
+
+\textbf{Booking page} is for client who already know the cost of their
+service and want to make an appointment in future, this page allow them
+to self-service, register and login to add their bookings, they also
+will see the booking statue after they posted it and after completed by
+worker, they will be able to give rating to the service and and worker.
+The booking with totally have the statue:
+
+\begin{itemize}
+\tightlist
+\item
+  Approved
+\item
+  Declined
+\item
+  Completed
+\item
+  Pending
+\end{itemize}
+
+Client also can cancel the booking when it is in \enquote{pending}
+state.
+
+\textbf{Manager dashboard} is for site managers to manage the booking,
+quote statues and view the data visualization for user's activates.
+
+\hypertarget{include-at-some-point-a-list-of-the-functionality-that-you-have-completed.}{%
+\subsection{Include, at some point, a list of the functionality that you
+have
+completed.}\label{include-at-some-point-a-list-of-the-functionality-that-you-have-completed.}}
+
+\begin{itemize}
+\tightlist
+\item
+  Booking : add, update, delete database from frontend to backend, email
+  autocomplete.
+\item
+  Serverless post/contact form: validation check, send email after the
+  form sent to AWS cloud.
+\item
+  Make use of basic and customized hooks like \texttt{useContext},
+  \texttt{useState}, \texttt{useEffect},\texttt{useRef},
+  \texttt{useForm} to efficiently manage react's life cycle.
+\item
+  Used redux library to manage state globally.(Hooks include
+  \texttt{useSelect}, \texttt{useDispatch}, \texttt{useReducer})
+\item
+  Test driving development for API, in the end everything works fine.
+\item
+  Implement firebase Auth, Google autocomplete
+\end{itemize}
+
+\hypertarget{include-at-some-point-a-list-of-the-functionality-that-you-had-planned-to-implement-but-did-not-finish.-state-how-far-along-this-functionality-is.-even-listing-un-started-functionality-can-give-context-to-wider-decisions.}{%
+\subsection{Include, at some point, a list of the functionality that you
+had planned to implement but did not finish. State how far along this
+functionality is. Even listing un-started functionality can give context
+to wider
+decisions.}\label{include-at-some-point-a-list-of-the-functionality-that-you-had-planned-to-implement-but-did-not-finish.-state-how-far-along-this-functionality-is.-even-listing-un-started-functionality-can-give-context-to-wider-decisions.}}
+
+\begin{itemize}
+\tightlist
+\item
+  Google login, I thought should be more convenient for clients, save
+  their time for sign up
+\item
+  Fully serverless site, everything based on apis
+\item
+  GraphQL APIs
+\item
+  Use Typescript to make the code strong typed use React Native to make
+  it have mobile version both IOS and Android
+\item
+  Automatically get user's location and calculate his yard square meter
+\item
+  Use containers and CI/CD when developing this project
+\end{itemize}
+
+\hypertarget{include-at-some-point-a-sequence-of-steps-that-a-user-may-undergo-when-using-your-application.}{%
+\subsection{Include, at some point, a sequence of steps that a user may
+undergo when using your
+application.}\label{include-at-some-point-a-sequence-of-steps-that-a-user-may-undergo-when-using-your-application.}}
+
+For landing page, \enquote{\emph{get quote}}, \enquote{\emph{contact
+me}}, \enquote{\emph{Login}} could be some link for viewer to have
+interaction with the backend.
+
+When viewer click \emph{\enquote{contact me}} they will be directed to a
+page submit message or question to my email and message data also will
+be save on AWS dynamoDB for backup to be analysis or used for future
+training propose.
+
+When \emph{\enquote{login}} clicked browser will open anther website
+which is a webapp run on the heroku and allow user to manage their
+booking.
+
+\hypertarget{include-at-some-point-a-discussion-of-the-technologies-that-you-have-used.}{%
+\subsection{Include, at some point, a discussion of the technologies
+that you have
+used.}\label{include-at-some-point-a-discussion-of-the-technologies-that-you-have-used.}}
+
+The main thing the project to me is to explore and make use of latest
+development technology as many as possible. So I may use multiple
+technologies for just same functionality. Used eslint to better lint the
+code,
+
+\hypertarget{front-end}{%
+\subsubsection{Front-end}\label{front-end}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.10\columnwidth}\raggedright
+Tech\strut
+\end{minipage} & \begin{minipage}[b]{0.84\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.10\columnwidth}\raggedright
+React.js\strut
+\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
+Core framework for this website\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\raggedright
+MaterialUI\strut
+\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
+Design a responsive UI, used template for fast development, import as
+component when using\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\raggedright
+Next.js\strut
+\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
+provide better page oriented router and generate static site, JAMStack
+builder\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\raggedright
+Vercel\strut
+\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
+Website Deployment platform which provide CDN and automatic host for
+static site(like gitPage)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\raggedright
+Tailwind\strut
+\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
+CSS framework that you can edit all the style in \texttt{className} of a
+element(used for landing page since which support agile dev)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\raggedright
+Google Firebase\strut
+\end{minipage} & \begin{minipage}[t]{0.84\columnwidth}\raggedright
+Combine with \texttt{useContext} hook provide user authentication for
+whole react \& send token to backend\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{back-end}{%
+\subsubsection{Back-end}\label{back-end}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.29\columnwidth}\raggedright
+Tech\strut
+\end{minipage} & \begin{minipage}[b]{0.65\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+Node.js\strut
+\end{minipage} & \begin{minipage}[t]{0.65\columnwidth}\raggedright
+Manage the APIs for booking, quotes and client users\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+AWS Lambda service \& Gateway\strut
+\end{minipage} & \begin{minipage}[t]{0.65\columnwidth}\raggedright
+Provide serverless API\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+MongoDB \& mongoose\strut
+\end{minipage} & \begin{minipage}[t]{0.65\columnwidth}\raggedright
+NoSQL database to store website data, with mongoose to better control
+schema\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+Jest + supertest\strut
+\end{minipage} & \begin{minipage}[t]{0.65\columnwidth}\raggedright
+test APIs\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+DynamoDB + AWS SNS\strut
+\end{minipage} & \begin{minipage}[t]{0.65\columnwidth}\raggedright
+Push email to me after viewer send form contact me\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+Heroku\strut
+\end{minipage} & \begin{minipage}[t]{0.65\columnwidth}\raggedright
+Deploy backend on server and provide a domain\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+Firebase admin\strut
+\end{minipage} & \begin{minipage}[t]{0.65\columnwidth}\raggedright
+Used for decode and refresh the public key for
+auth(\texttt{uerIdToken})\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+\sout{Bcrypt}\strut
+\end{minipage} & \begin{minipage}[t]{0.65\columnwidth}\raggedright
+\sout{encrypt pass work to protect user privacy in database abandoned
+after use firebase}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.29\columnwidth}\raggedright
+\sout{JWT token}(replaced by firebaseAdmin)\strut
+\end{minipage} & \begin{minipage}[t]{0.65\columnwidth}\raggedright
+\sout{Decode token send by firebase and extract user information from
+it(User Identification)}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{include-towards-the-end-a-discussion-of-the-challenges-you-have-encountered.-howdid-you-overcome-them}{%
+\subsection{Include, towards the end, a discussion of the challenges you
+have encountered. How/did you overcome
+them?}\label{include-towards-the-end-a-discussion-of-the-challenges-you-have-encountered.-howdid-you-overcome-them}}
+
+Time schedule is my biggest problem, I split the huge project into many
+small tasks and making todo list for each tasks, to control the time and
+schedule each one, but sometime one small bug could take a long time. So
+in future's project I should learn some useful testing tools to test
+driving development more professional.
+
+No much function in admin management system, I was planning to add in
+app email and invoice sending application but got no time lift.
+
+The project is more like a macro one includes everything but not
+perfection in very details, so I think I should focus on more micro
+function more in future.
+
+Should use and retrieve more data from user and make more data
+orientated for admin manage page, since the data are valuable nowadays,
+business need that data to analysis their client's behaviors to be
+further give the service they need.
+
+During this project I found for front-end side we should focus on build
+small and functional component/library that could be reused by others to
+save our time. People could build their project on the top of your
+component and concentrate on more important things rather than waste
+many time in adjust detailed styles.
+
+\end{document}

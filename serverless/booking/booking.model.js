@@ -12,12 +12,13 @@ const bookingSchema = new mongoose.Schema({
       serviceComment: String,
     }
   ],
-  worker:String,
+  worker:[String],
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  adminComment: String
+  adminComment: String,
+  bookingNote:String
 })
 
 bookingSchema.set('toJSON', {

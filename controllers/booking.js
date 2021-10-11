@@ -38,6 +38,7 @@ booksRouter.post('/', async (req, res) => {
     serviceItem: body.serviceItem,
     address:body.address,
     adminComment: body.adminComment,
+    bookingNote:body.bookingNote,
     user: user._id
   })
 
