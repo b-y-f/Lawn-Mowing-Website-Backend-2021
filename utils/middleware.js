@@ -34,7 +34,7 @@ const userExtractor = async(req, res, next) => {
     const res = await admin
       .auth()
       .verifyIdToken(req.token)
-      .catch(err=>console.log(err))
+      .catch(err=>console.log('token verification fail',err))
     // console.log(res)
     req.user = await User.findOne({uid:res.uid}).exec()
 
