@@ -1,7 +1,7 @@
 ---
 title: "Lawn Mowing website fullstack"
 author: [Bill]
-date: "2021-10-10"
+date: "17-Oct-2021"
 keywords: [Fullstack, React, Lawn mowing, Node.js, Serverless]
 ---
 
@@ -25,7 +25,7 @@ Client also can cancel the booking when it is in "pending" state.
 
 **Manager dashboard** is for site managers to manage the booking, quote statues and view the data visualization for user's activates.
 
-## Include, at some point, a list of the functionality that you have completed.
+## Functionality Completed
 
 - Booking : add, update, delete database from frontend to backend, email autocomplete.
 - Serverless post/contact form:  validation check, send email after the form sent to AWS cloud.
@@ -33,16 +33,17 @@ Client also can cancel the booking when it is in "pending" state.
 - Used redux library to manage state globally.(Hooks include `useSelect`, `useDispatch`, `useReducer`)
 - Test driving development for API, in the end everything works fine.
 - Implement firebase Auth, Google autocomplete
+- Manipulate data structure to retrieve useful information from data.
 
 
-## Include, at some point, a list of the functionality that you had planned to implement but did not finish.  State how far along this functionality is.  Even listing un-started functionality can give context to wider decisions.
+## Planned to implement but did not finish
 
-- Google login, I thought should be more convenient for clients, save their time for sign up
-- Fully serverless site, everything based on apis
+- Fully serverless site, everything based on apis(currently user booking remaining)
 - GraphQL APIs
 - Use Typescript to make the code strong typed use React Native to make it have mobile version both IOS and Android
 - Automatically get user's location and calculate his yard square meter
 - Use containers and CI/CD when developing this project
+- Recaptcha v3 to protect bots
 
 
 ## Include, at some point, a sequence of steps that a user may undergo when using your application.
@@ -83,10 +84,10 @@ The main thing the project to me is to explore and make use of latest developmen
 | ~~Bcrypt~~                               | ~~encrypt pass work to protect user privacy in database abandoned after use firebase~~      |
 | ~~JWT token~~(replaced by firebaseAdmin) | ~~Decode token send by firebase and extract user information from it(User Identification)~~ |
 
+*those strikes line are tech replaced by other teches*
 
 
-
-## Include, towards the end, a discussion of the challenges you have encountered.  How/did you overcome them?
+## Challenges
 
 Time schedule is my biggest problem, I split the huge project into many small tasks and making todo list for each tasks, to control the time and schedule each one, but sometime one small bug could take a long time. So in future's project I should learn some useful testing tools to test driving development more professional.
 

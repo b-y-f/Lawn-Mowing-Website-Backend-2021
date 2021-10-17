@@ -126,7 +126,7 @@
 
 \title{Lawn Mowing website fullstack}
 \author{Bill}
-\date{2021-10-10}
+\date{17-Oct-2021}
 
 
 
@@ -236,7 +236,7 @@
 \usepackage{titling}
 \title{Lawn Mowing website fullstack}
 \author{Bill}
-\date{2021-10-10}
+\date{17-Oct-2021}
 
 %
 % tables
@@ -273,9 +273,9 @@
 \fancypagestyle{eisvogel-header-footer}{
   \fancyhead{}
   \fancyfoot{}
-  \lhead[2021-10-10]{Lawn Mowing website fullstack}
+  \lhead[17-Oct-2021]{Lawn Mowing website fullstack}
   \chead[]{}
-  \rhead[Lawn Mowing website fullstack]{2021-10-10}
+  \rhead[Lawn Mowing website fullstack]{17-Oct-2021}
   \lfoot[\thepage]{Bill}
   \cfoot[]{}
   \rfoot[Bill]{\thepage}
@@ -347,10 +347,8 @@ state.
 \textbf{Manager dashboard} is for site managers to manage the booking,
 quote statues and view the data visualization for user's activates.
 
-\hypertarget{include-at-some-point-a-list-of-the-functionality-that-you-have-completed.}{%
-\subsection{Include, at some point, a list of the functionality that you
-have
-completed.}\label{include-at-some-point-a-list-of-the-functionality-that-you-have-completed.}}
+\hypertarget{functionality-completed}{%
+\subsection{Functionality Completed}\label{functionality-completed}}
 
 \begin{itemize}
 \tightlist
@@ -371,22 +369,19 @@ completed.}\label{include-at-some-point-a-list-of-the-functionality-that-you-hav
   Test driving development for API, in the end everything works fine.
 \item
   Implement firebase Auth, Google autocomplete
+\item
+  Manipulate data structure to retrieve useful information from data.
 \end{itemize}
 
-\hypertarget{include-at-some-point-a-list-of-the-functionality-that-you-had-planned-to-implement-but-did-not-finish.-state-how-far-along-this-functionality-is.-even-listing-un-started-functionality-can-give-context-to-wider-decisions.}{%
-\subsection{Include, at some point, a list of the functionality that you
-had planned to implement but did not finish. State how far along this
-functionality is. Even listing un-started functionality can give context
-to wider
-decisions.}\label{include-at-some-point-a-list-of-the-functionality-that-you-had-planned-to-implement-but-did-not-finish.-state-how-far-along-this-functionality-is.-even-listing-un-started-functionality-can-give-context-to-wider-decisions.}}
+\hypertarget{planned-to-implement-but-did-not-finish}{%
+\subsection{Planned to implement but did not
+finish}\label{planned-to-implement-but-did-not-finish}}
 
 \begin{itemize}
 \tightlist
 \item
-  Google login, I thought should be more convenient for clients, save
-  their time for sign up
-\item
-  Fully serverless site, everything based on apis
+  Fully serverless site, everything based on apis(currently user booking
+  remaining)
 \item
   GraphQL APIs
 \item
@@ -396,6 +391,8 @@ decisions.}\label{include-at-some-point-a-list-of-the-functionality-that-you-had
   Automatically get user's location and calculate his yard square meter
 \item
   Use containers and CI/CD when developing this project
+\item
+  Recaptcha v3 to protect bots
 \end{itemize}
 
 \hypertarget{include-at-some-point-a-sequence-of-steps-that-a-user-may-undergo-when-using-your-application.}{%
@@ -540,10 +537,10 @@ it(User Identification)}\strut
 \bottomrule
 \end{longtable}
 
-\hypertarget{include-towards-the-end-a-discussion-of-the-challenges-you-have-encountered.-howdid-you-overcome-them}{%
-\subsection{Include, towards the end, a discussion of the challenges you
-have encountered. How/did you overcome
-them?}\label{include-towards-the-end-a-discussion-of-the-challenges-you-have-encountered.-howdid-you-overcome-them}}
+\emph{those strikes line are tech replaced by other teches}
+
+\hypertarget{challenges}{%
+\subsection{Challenges}\label{challenges}}
 
 Time schedule is my biggest problem, I split the huge project into many
 small tasks and making todo list for each tasks, to control the time and
